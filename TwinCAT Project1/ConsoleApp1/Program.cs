@@ -18,6 +18,7 @@ namespace ConsoleApp1
             if (ads.IsConnected)
             {
                 Console.WriteLine("I have connection!");
+                Console.WriteLine("Hello from the other side!");
             } else
             {
                 Console.WriteLine("I cant connect!");
