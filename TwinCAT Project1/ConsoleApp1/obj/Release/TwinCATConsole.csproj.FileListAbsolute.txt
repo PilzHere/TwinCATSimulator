@@ -1,0 +1,9 @@
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\bin\Release\ConsoleApp1.exe.config
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\bin\Release\ConsoleApp1.exe
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\bin\Release\ConsoleApp1.pdb
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\bin\Release\TwinCAT.Ads.dll
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Release\TwinCATConsole.csprojAssemblyReference.cache
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Release\TwinCATConsole.csproj.CoreCompileInputs.cache
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Release\TwinCATConsole.csproj.CopyComplete
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Release\ConsoleApp1.exe
+C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Release\ConsoleApp1.pdb
