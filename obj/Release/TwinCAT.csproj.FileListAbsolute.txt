@@ -1,0 +1,7 @@
+C:\Users\pilzm\source\repos\TwinCATSimulator\bin\Release\TwinCAT.dll
+C:\Users\pilzm\source\repos\TwinCATSimulator\bin\Release\TwinCAT.pdb
+C:\Users\pilzm\source\repos\TwinCATSimulator\obj\Release\TwinCAT.csprojAssemblyReference.cache
+C:\Users\pilzm\source\repos\TwinCATSimulator\obj\Release\TwinCAT.csproj.CoreCompileInputs.cache
+C:\Users\pilzm\source\repos\TwinCATSimulator\obj\Release\TwinCAT.csproj.CopyComplete
+C:\Users\pilzm\source\repos\TwinCATSimulator\obj\Release\TwinCAT.dll
+C:\Users\pilzm\source\repos\TwinCATSimulator\obj\Release\TwinCAT.pdb

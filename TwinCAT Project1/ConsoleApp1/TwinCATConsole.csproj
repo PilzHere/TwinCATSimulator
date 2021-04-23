@@ -53,5 +53,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TwinCAT\TwinCAT.csproj">
+      <Project>{f56c1919-0fc2-460e-98f7-a1619139a6e4}</Project>
+      <Name>TwinCAT</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

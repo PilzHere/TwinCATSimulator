@@ -1991,6 +1991,14 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.__Manual.test": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "MAPPING": "PLC1::__Manual::test",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/INT32"
+            }
+        },
         "RefreshDefinitions": {
             "ACCESS": 3,
             "DOMAIN": "TcHmiSrv",
@@ -2673,6 +2681,12 @@
                 "type": "number"
             },
             "USEMAPPING": true
+        },
+        "test": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "1",
+            "DOMAIN": "",
+            "MAPPING": ""
         }
     },
     "TEMPDH": "",

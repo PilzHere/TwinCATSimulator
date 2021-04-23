@@ -3,11 +3,11 @@
 	<Project ProjectGUID="{E3D5D5FF-D512-43FF-A168-EE0BF698E7E4}" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" CreateSymbols="true" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
-				<Task Id="4" Priority="1" CycleTime="100000" AmsPort="301">
-					<Name>Task 4</Name>
+				<Task Id="4" CreateSymbols="true" Priority="1" CycleTime="100000" AmsPort="301">
+					<Name>Task</Name>
 					<Vars VarGrpType="1" InsertType="1">
 						<Name>Inputs</Name>
 						<Var>
@@ -21,8 +21,19 @@
 							<Name>Var 2</Name>
 							<Type>BOOL</Type>
 						</Var>
+						<Var>
+							<Name>Var 4</Name>
+							<Type>DINT</Type>
+							<BitOffs>32320</BitOffs>
+						</Var>
+						<Var>
+							<Name>Out5</Name>
+							<Type>BOOL</Type>
+							<BitOffs>32352</BitOffs>
+							<ExternalAddress>4044</ExternalAddress>
+						</Var>
 					</Vars>
-					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="1">
+					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="4045">
 						<Name>Image</Name>
 					</Image>
 				</Task>
@@ -33,6 +44,13 @@
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Untitled1\Untitled1.tmc">
 					<Name>Untitled1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>Plc_AI.AI01</Name>
+							<Type>INT</Type>
+						</Var>
+					</Vars>
 					<Contexts>
 						<Context>
 							<Id NeedCalleeCall="true">0</Id>
