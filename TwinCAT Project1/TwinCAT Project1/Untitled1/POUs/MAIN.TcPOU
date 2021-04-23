@@ -3,23 +3,12 @@
   <POU Name="MAIN" Id="{7a206d30-1839-491e-a1bd-10b80568af76}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	Run : BOOL;
-	MOTOR: BOOL;
-END_VAR
-]]></Declaration>
+        test AT%MD0 : DINT;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF (RUN = TRUE)
-	THEN 
-		MOTOR := TRUE;
-	ELSE
-		MOTOR := FALSE;
-END_IF]]></ST>
+      <ST><![CDATA[test := test + 1;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="2" Count="0" />
-      <LineId Id="8" Count="0" />
-      <LineId Id="10" Count="1" />
-      <LineId Id="13" Count="0" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
