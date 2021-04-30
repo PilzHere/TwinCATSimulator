@@ -47,6 +47,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Batteries\AAABattery.cs" />
+    <Compile Include="Batteries\AABattery.cs" />
+    <Compile Include="Batteries\Battery.cs" />
+    <Compile Include="Batteries\BatteryInProduction.cs" />
+    <Compile Include="Maths\Maths.cs" />
+    <Compile Include="Recipes\BatteryRecipe.cs" />
+    <Compile Include="Recipes\RecipeHandler.cs" />
+    <Compile Include="Simulator\PLCSimulator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

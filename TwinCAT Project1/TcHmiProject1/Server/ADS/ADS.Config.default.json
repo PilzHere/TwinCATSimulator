@@ -6,6 +6,55 @@
         "UpperBorder"
     ],
     "RUNTIMES": {
+        "In1": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "Out1": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "Out2": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "Out3": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "Out4": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "Out5": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "Out6": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
         "PLC1": {
             "ENABLED": true,
             "NETID": "127.0.0.1.1.1",
@@ -17,6 +66,146 @@
                     "TYPENAME": "INT32"
                 }
             },
+            "USE_WHITELISTING": false
+        },
+        "tachom1MaxOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom1MaxValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom1MinOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom1MinValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom1RealValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom2MaxOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom2MaxValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom2MinOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom2MinValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom2RealValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom3MaxOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom3MaxValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom3MinOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom3MinValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom3RealValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom4MaxOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom4MaxValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom4MinOutOfRange": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom4MinValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "tachom4RealValue": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
             "USE_WHITELISTING": false
         }
     },

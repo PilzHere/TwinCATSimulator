@@ -1991,6 +1991,66 @@
             },
             "USEMAPPING": true
         },
+        "Out1.Task.Outputs.Out1": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "Out1::Task::Outputs::Out1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "Out1.Task.Outputs.Out2": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "Out1::Task::Outputs::Out2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
+        "Out3.Task.Outputs.Out1": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "Out3::Task::Outputs::Out1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "Out3.Task.Outputs.Out2": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "Out3::Task::Outputs::Out2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
+        "Out4.Task.Outputs.Out2": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "Out4::Task::Outputs::Out2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
+        "Out6.Task.Outputs.Out1": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "Out6::Task::Outputs::Out1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "PLC1.__Manual.test": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2679,6 +2739,206 @@
             "SCHEMA": {
                 "function": true,
                 "type": "number"
+            },
+            "USEMAPPING": true
+        },
+        "tachom1MaxOutOfRange.Task.Outputs.tachom1MaxOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom1MaxOutOfRange::Task::Outputs::tachom1MaxOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom1MaxValue.Task.Outputs.tachom1MaxValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom1MaxValue::Task::Outputs::tachom1MaxValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom1MinOutOfRange.Task.Outputs.tachom1MinOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom1MinOutOfRange::Task::Outputs::tachom1MinOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom1MinValue.Task.Outputs.tachom1MinValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom1MinValue::Task::Outputs::tachom1MinValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom1RealValue.Task.Outputs.tachom1RealValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom1RealValue::Task::Outputs::tachom1RealValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom2MaxOutOfRange.Task.Outputs.tachom2MaxOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom2MaxOutOfRange::Task::Outputs::tachom2MaxOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom2MaxValue.Task.Outputs.tachom2MaxValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom2MaxValue::Task::Outputs::tachom2MaxValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom2MinOutOfRange.Task.Outputs.tachom2MinOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom2MinOutOfRange::Task::Outputs::tachom2MinOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom2MinValue.Task.Outputs.tachom2MinValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom2MinValue::Task::Outputs::tachom2MinValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom2RealValue.Task.Outputs.tachom2RealValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom2RealValue::Task::Outputs::tachom2RealValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom3MaxOutOfRange.Task.Outputs.tachom3MaxOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom3MaxOutOfRange::Task::Outputs::tachom3MaxOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom3MaxValue.Task.Outputs.tachom3MaxValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom3MaxValue::Task::Outputs::tachom3MaxValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom3MinOutOfRange.Task.Outputs.tachom3MinOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom3MinOutOfRange::Task::Outputs::tachom3MinOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom3MinValue.Task.Outputs.tachom3MinValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom3MinValue::Task::Outputs::tachom3MinValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom3RealValue.Task.Outputs.tachom3RealValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom3RealValue::Task::Outputs::tachom3RealValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom4MaxOutOfRange.Task.Outputs.tachom4MaxOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom4MaxOutOfRange::Task::Outputs::tachom4MaxOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom4MaxValue.Task.Outputs.tachom4MaxValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom4MaxValue::Task::Outputs::tachom4MaxValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom4MinOutOfRange.Task.Outputs.tachom4MinOutOfRange": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom4MinOutOfRange::Task::Outputs::tachom4MinOutOfRange",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom4MinValue.Task.Outputs.tachom4MinValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom4MinValue::Task::Outputs::tachom4MinValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "tachom4RealValue.Task.Outputs.tachom4RealValue": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "tachom4RealValue::Task::Outputs::tachom4RealValue",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
             },
             "USEMAPPING": true
         },

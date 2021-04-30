@@ -11,29 +11,170 @@
 					<Vars VarGrpType="1" InsertType="1">
 						<Name>Inputs</Name>
 						<Var>
-							<Name>Var 1</Name>
+							<Name>In1</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2" InsertType="1">
 						<Name>Outputs</Name>
 						<Var>
-							<Name>Var 2</Name>
+							<Name>Out1</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>Var 4</Name>
+							<Name>Out2</Name>
+							<Comment><![CDATA[Product option]]></Comment>
 							<Type>DINT</Type>
-							<BitOffs>32320</BitOffs>
+							<BitOffs>8</BitOffs>
+							<ExternalAddress>1</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>Out3</Name>
+							<Type>DINT</Type>
+							<BitOffs>40</BitOffs>
+							<ExternalAddress>5</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>Out4</Name>
+							<Type>ENUM</Type>
+							<BitOffs>72</BitOffs>
+							<ExternalAddress>9</ExternalAddress>
 						</Var>
 						<Var>
 							<Name>Out5</Name>
 							<Type>BOOL</Type>
-							<BitOffs>32352</BitOffs>
-							<ExternalAddress>4044</ExternalAddress>
+							<BitOffs>104</BitOffs>
+							<ExternalAddress>13</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>Out6</Name>
+							<Comment><![CDATA[0: PAUSE 1: START]]></Comment>
+							<Type>BOOL</Type>
+							<BitOffs>112</BitOffs>
+							<ExternalAddress>14</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom1MinOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>120</BitOffs>
+							<ExternalAddress>15</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom1MinValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>184</BitOffs>
+							<ExternalAddress>23</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom1RealValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>248</BitOffs>
+							<ExternalAddress>31</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom1MaxValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>312</BitOffs>
+							<ExternalAddress>39</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom1MaxOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>376</BitOffs>
+							<ExternalAddress>47</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom2MinOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>440</BitOffs>
+							<ExternalAddress>55</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom2MinValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>504</BitOffs>
+							<ExternalAddress>63</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom2RealValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>568</BitOffs>
+							<ExternalAddress>71</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom2MaxValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>632</BitOffs>
+							<ExternalAddress>79</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom2MaxOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>696</BitOffs>
+							<ExternalAddress>87</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom3MinOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>760</BitOffs>
+							<ExternalAddress>95</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom3MinValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>824</BitOffs>
+							<ExternalAddress>103</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom3RealValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>888</BitOffs>
+							<ExternalAddress>111</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom3MaxValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>952</BitOffs>
+							<ExternalAddress>119</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom3MaxOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>1016</BitOffs>
+							<ExternalAddress>127</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom4MinOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>1080</BitOffs>
+							<ExternalAddress>135</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom4MinValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>1144</BitOffs>
+							<ExternalAddress>143</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom4RealValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>1208</BitOffs>
+							<ExternalAddress>151</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom4MaxValue</Name>
+							<Type>LREAL</Type>
+							<BitOffs>1272</BitOffs>
+							<ExternalAddress>159</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>tachom4MaxOutOfRange</Name>
+							<Type>LREAL</Type>
+							<BitOffs>1336</BitOffs>
+							<ExternalAddress>167</ExternalAddress>
 						</Var>
 					</Vars>
-					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="4045">
+					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="175">
 						<Name>Image</Name>
 					</Image>
 				</Task>

@@ -6,3 +6,15 @@ C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsol
 C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csproj.CopyComplete
 C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Users\pilzm\source\repos\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\TwinCAT.Ads.dll
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\TwinCAT.dll
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\TwinCAT.pdb
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csprojAssemblyReference.cache
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.exe.config
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csproj.CoreCompileInputs.cache
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csproj.CopyComplete
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
