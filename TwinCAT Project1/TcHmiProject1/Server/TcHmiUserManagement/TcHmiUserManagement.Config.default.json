@@ -1,10 +1,22 @@
 {
     "USERS": {
+        "Anna": {
+            "ALGORITHM": 1,
+            "ENABLED": true,
+            "PASSWORD": "2c67435ee64b357a97e296bf3ac38c6d28d2b5b1b96ab511e1a0ab0e15bc0b4b39d33c3c67a365f033f942e64034b3e0b327a2a12e935789dce6f41f8b262413",
+            "SALT": "wqzCId4g7bzbeBa/GTEbxXw4JWQUGS7v43ml9UonkNXXvdbeW8JC+bjCTCOQB7vpIENzofWxyoEG8mGtRaCZAA=="
+        },
+        "Kalle": {
+            "ALGORITHM": 1,
+            "ENABLED": true,
+            "PASSWORD": "c66dc7ceb2639ca46e97319f9b1c7202db0b2647b31c928c52807c2f2b4ee8154b1183d128c5e20304ab10426122f513d66f023570fc71fdcfa7dc3dcd40d232",
+            "SALT": "5JD1ZrK98SrzpcUR7lU+c9ZvHQQ8QVr2vYCdhBsSRD3rBgoFrT5EUMfHDrovnaqPG6+3VbpaUAlnKGJ/vjteAA=="
+        },
         "__SystemAdministrator": {
-            "ALGORITHM": 0,
-            "ENABLED": false,
-            "PASSWORD": "",
-            "SALT": ""
+            "ALGORITHM": 1,
+            "ENABLED": true,
+            "PASSWORD": "0c13eff96d5c9276c52aa49945d705caad960a968036a6a921cc864dc40f24957cad45bd4795ad799e6ee39f7b09c7aa436e5a64c25b9575e02090541c9d77aa",
+            "SALT": "Mxdi4o9q9zzdKv1LaRm/u/bM/m3SQDILBGY/+dwyJ4iIJFaiIVZm1clBuRkb9FUlZZp/qUdbCXNJpkrP1yhdAA=="
         },
         "__SystemGuest": {
             "ALGORITHM": 0,

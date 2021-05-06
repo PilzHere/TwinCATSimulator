@@ -23,7 +23,7 @@
     <EnableTypeScript>true</EnableTypeScript>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
     <Name>TcHmiProject1</Name>
-    <HmiCommunicationRouterPort>10104</HmiCommunicationRouterPort>
+    <HmiCommunicationRouterPort>10109</HmiCommunicationRouterPort>
     <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.746.0</HmiInitial>
     <HmiRecent>1.12.746.0</HmiRecent>
@@ -118,11 +118,14 @@
     <Folder Include="Fonts\" />
     <Folder Include="Images" />
     <Folder Include="Images\Manifest" />
+    <Folder Include="Images\AA" />
+    <Folder Include="Images\AAA" />
     <Folder Include="Imports" />
     <Folder Include="Imports\Images" />
     <Folder Include="Imports\Videos" />
     <Folder Include="KeyboardLayouts\" />
     <Folder Include="Localization" />
+    <Folder Include="Functions" />
     <Folder Include="Themes" />
     <Folder Include="Themes\Base\" />
     <Folder Include="Server" />
@@ -130,7 +133,223 @@
     <Content Include=".eslintrc.json">
       <Visible>false</Visible>
     </Content>
+    <Content Include="Functions\GetCurrentPicture.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Functions\GetCurrentPicture.js</DependentUpon>
+    </Content>
+    <Content Include="Functions\GetCurrentPicture.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Functions\MyFunction.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Functions\MyFunction.js</DependentUpon>
+    </Content>
+    <Content Include="Functions\MyFunction.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Functions\MyFunction2.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Functions\MyFunction2.js</DependentUpon>
+    </Content>
+    <Content Include="Functions\MyFunction2.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05793.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05794.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05795.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05796.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05797.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05798.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05799.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05800.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05801.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05802.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05803.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05804.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05805.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05806.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05807.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05808.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05809.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05810.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05811.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05812.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05813.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05814.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05815.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05816.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05817.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05818.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05819.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05820.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05821.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05822.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AAA\DSC05823.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05824.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05825.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05826.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05827.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05828.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05829.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05830.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05831.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05832.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05833.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05834.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05835.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05836.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05837.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05838.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05839.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05840.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05841.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05842.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05843.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05844.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05845.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05846.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05847.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05848.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05849.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05850.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05851.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05852.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05853.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05854.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05855.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\AA\DSC05856.JPG">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Imports\Images\vision-normal.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LoginPage1.html">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Server\TcHmiLua\TcHmiLua.Config.default.json">

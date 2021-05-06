@@ -35,10 +35,12 @@ namespace TwinCAT
                 { AdsDatatypeId.ADST_INT64, typeof(long) },
                 { AdsDatatypeId.ADST_UINT64, typeof(ulong) },
                 { AdsDatatypeId.ADST_BIT, typeof(bool) }
+
+                //{ AdsDatatypeId.ADST_STRING, typeof(string) }
             };
 
         /// <summary>TwinCAT ADS communication client.</summary>
-        private TcAdsClient adsClient;
+        public TcAdsClient adsClient; // was private
         /// <summary>
         /// Information about all declared variables exported by the ADS
         /// server.

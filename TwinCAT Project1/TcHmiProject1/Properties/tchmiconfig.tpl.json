@@ -3,7 +3,7 @@
   "basePath": "./framework",
   "scaleMode": "None",
   "startupView": "Desktop.view",
-  "loginPage": "",
+  "loginPage": "/LoginPage1.html",
   "tcHmiServer": {
     "websocketIntervalTime": 500,
     "websocketTimeout": 20000,
@@ -33,6 +33,21 @@
       "name": "Fonts/Fonts.css",
       "description": "",
       "type": "Stylesheet"
+    },
+    {
+      "name": "Functions/MyFunction.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Functions/MyFunction2.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Functions/GetCurrentPicture.js",
+      "description": "",
+      "type": "JavaScript"
     }
   ],
   "userControls": [],
@@ -44,7 +59,17 @@
       "keepAlive": false
     }
   ],
-  "userFunctions": [],
+  "userFunctions": [
+    {
+      "url": "Functions/MyFunction.js"
+    },
+    {
+      "url": "Functions/MyFunction2.js"
+    },
+    {
+      "url": "Functions/GetCurrentPicture.js"
+    }
+  ],
   "symbols": {
     "internal": {}
   },

@@ -25,7 +25,16 @@
     "DEFAULTTIMEFORMATLOCALE": "client",
     "DEFAULTTIMEZONE": "client",
     "DEFAULTUSERGROUP": "__SystemUsers",
-    "DEFINITIONS": {},
+    "DEFINITIONS": {
+        "picture.ARRAY (0..255) OF BYTE": {
+            "items": {
+                "$ref": "tchmi:general#/definitions/BYTE"
+            },
+            "maxItems": 256,
+            "minItems": 256,
+            "type": "array"
+        }
+    },
     "DEFLATECOMPRESSIONLEVEL": 5,
     "DIAGNOSTICS_DOMAINS": [],
     "DISCOVERY": 2,
@@ -67,7 +76,16 @@
             "STARTUPTYPE": 1
         }
     },
-    "FILES": {},
+    "FILES": {
+        "/": {
+            "ACCESS": 3,
+            "LOGINPAGE": "/LoginPage1.html"
+        },
+        "www/Default.html": {
+            "ACCESS": 3,
+            "LOGINPAGE": "/LoginPage1.html"
+        }
+    },
     "FLOODPROTECTION": 500,
     "GLOBALHTTPHEADERS": "{LASTMODIFIED}\nStrict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: frame-ancestors 'self'",
     "GZIPENABLED": true,
@@ -2742,6 +2760,100 @@
             },
             "USEMAPPING": true
         },
+        "currentPicture.Task.Outputs.currentPicture": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "currentPicture::Task::Outputs::currentPicture",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "maxLength": 255
+                    },
+                    {
+                        "$ref": "tchmi:general#/definitions/String"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "currentPictureInt.Task.Outputs.currentPictureInt": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "currentPictureInt::Task::Outputs::currentPictureInt",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
+        "currentPictureInt2.Task.Outputs.currentPictureInt2": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "currentPictureInt2::Task::Outputs::currentPictureInt2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
+        "picture.Task.Outputs.picture": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "picture::Task::Outputs::picture",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/picture.ARRAY (0..255) OF BYTE"
+            },
+            "USEMAPPING": true
+        },
+        "picture2.Task.Outputs.picture2": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "picture2::Task::Outputs::picture2",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "maxLength": 255
+                    },
+                    {
+                        "$ref": "tchmi:general#/definitions/String"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "productCount.Task.Outputs.productCount": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "productCount::Task::Outputs::productCount",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
+        "productFailed.Task.Outputs.productFailed": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "productFailed::Task::Outputs::productFailed",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
+        "productPassed.Task.Outputs.productPassed": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "productPassed::Task::Outputs::productPassed",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
         "tachom1MaxOutOfRange.Task.Outputs.tachom1MaxOutOfRange": {
             "ACCESS": 3,
             "CUSTOMERDATA": "",
@@ -2953,6 +3065,38 @@
     "THREADPOOLSIZE": 32,
     "UPLOADTIMEOUT": "PT20S",
     "USERGROUPS": {
+        "Operator": {
+            "ENABLED": true,
+            "FILEACCESS": 1,
+            "FILES": {},
+            "SYMBOLACCESS": 3,
+            "SYMBOLS": {
+                "AddOrChangeUser": 0,
+                "ChangeUserSettings": 0,
+                "RemoveUser": 0,
+                "TcHmiUserManagement.AddUser": 0,
+                "TcHmiUserManagement.DisableUser": 0,
+                "TcHmiUserManagement.EnableUser": 0,
+                "TcHmiUserManagement.RemoveUser": 0,
+                "TcHmiUserManagement.RenameUser": 0
+            }
+        },
+        "Technician": {
+            "ENABLED": true,
+            "FILEACCESS": 3,
+            "FILES": {},
+            "SYMBOLACCESS": 3,
+            "SYMBOLS": {
+                "AddOrChangeUser": 0,
+                "ChangeUserSettings": 0,
+                "RemoveUser": 0,
+                "TcHmiUserManagement.AddUser": 0,
+                "TcHmiUserManagement.DisableUser": 0,
+                "TcHmiUserManagement.EnableUser": 0,
+                "TcHmiUserManagement.RemoveUser": 0,
+                "TcHmiUserManagement.RenameUser": 0
+            }
+        },
         "__SystemAdministrators": {
             "ENABLED": true,
             "FILEACCESS": 3,
@@ -2965,7 +3109,8 @@
             "FILEACCESS": 0,
             "FILES": {
                 "/Config/ServerState": 1,
-                "/FavIcon.ico": 1
+                "/FavIcon.ico": 1,
+                "/LoginPage1.html": 3
             },
             "SYMBOLACCESS": 0,
             "SYMBOLS": {
@@ -3021,6 +3166,26 @@
     },
     "USERGROUPUSERS": {
         "TcHmiUserManagement": {
+            "Anna": {
+                "USERGROUPUSERS_AUTO_LOGOFF": "P30D",
+                "USERGROUPUSERS_GROUPS": [
+                    "__SystemUsers",
+                    "Operator"
+                ],
+                "USERGROUPUSERS_LOCALE": "client",
+                "USERGROUPUSERS_TIMEFORMATLOCALE": "project",
+                "USERGROUPUSERS_TIMEZONE": "project"
+            },
+            "Kalle": {
+                "USERGROUPUSERS_AUTO_LOGOFF": "P30D",
+                "USERGROUPUSERS_GROUPS": [
+                    "__SystemUsers",
+                    "Technician"
+                ],
+                "USERGROUPUSERS_LOCALE": "client",
+                "USERGROUPUSERS_TIMEFORMATLOCALE": "project",
+                "USERGROUPUSERS_TIMEZONE": "project"
+            },
             "__SystemAdministrator": {
                 "USERGROUPUSERS_AUTO_LOGOFF": "P30D",
                 "USERGROUPUSERS_GROUPS": [

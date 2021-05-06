@@ -68,6 +68,62 @@
             },
             "USE_WHITELISTING": false
         },
+        "currentPicture": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "currentPictureInt": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "currentPictureInt2": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "picture": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "picture2": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "productCount": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "productFailed": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "productPassed": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
         "tachom1MaxOutOfRange": {
             "ENABLED": true,
             "NETID": "127.0.0.1.1.1",
