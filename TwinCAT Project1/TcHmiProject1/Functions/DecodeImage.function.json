@@ -1,0 +1,30 @@
+﻿{
+  "function": {
+    "name": "DecodeImage",
+    "namespace": "TcHmi.Functions.TcHmiProject1",
+    "displayName": "DecodeImage",
+    "description": "",
+    "waitMode": "Synchronous",
+    "category": "",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/String"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": [
+      {
+        "name": "par1",
+        "displayName": "Parameter",
+        "type": "tchmi:server#/definitions/picture.ARRAY (0..255) OF BYTE",
+        "description": "This is an important Parameter which does... This text is used in a tooltip.",
+        "defaultValue": "[\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0,\r\n  0\r\n]",
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      }
+    ]
+  },
+  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json"
+}

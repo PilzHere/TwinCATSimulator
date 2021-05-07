@@ -5,11 +5,16 @@
     (function (/** @type {globalThis.TcHmi.Functions} */ Functions) {
         var TcHmiProject1;
         (function (TcHmiProject1) {
-            function MyFunction(par1) {
-                return "hejsan"
+            function DecodeImage(bytes) {
+
+                var encodedString = String.fromCharCode.apply(null, bytes),
+                    decodedString = decodeURIComponent(escape(encodedString))
+
+                return decodedString
+
             }
-            TcHmiProject1.MyFunction = MyFunction;
+            TcHmiProject1.DecodeImage = DecodeImage;
         })(TcHmiProject1 = Functions.TcHmiProject1 || (Functions.TcHmiProject1 = {}));
-        Functions.registerFunctionEx('MyFunction', 'TcHmi.Functions.TcHmiProject1', TcHmiProject1.MyFunction);
+        Functions.registerFunctionEx('DecodeImage', 'TcHmi.Functions.TcHmiProject1', TcHmiProject1.DecodeImage);
     })(Functions = TcHmi.Functions || (TcHmi.Functions = {}));
 })(TcHmi);

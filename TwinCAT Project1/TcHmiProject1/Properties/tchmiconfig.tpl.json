@@ -35,17 +35,7 @@
       "type": "Stylesheet"
     },
     {
-      "name": "Functions/MyFunction.js",
-      "description": "",
-      "type": "JavaScript"
-    },
-    {
-      "name": "Functions/MyFunction2.js",
-      "description": "",
-      "type": "JavaScript"
-    },
-    {
-      "name": "Functions/GetCurrentPicture.js",
+      "name": "Functions/DecodeImage.js",
       "description": "",
       "type": "JavaScript"
     }
@@ -61,13 +51,7 @@
   ],
   "userFunctions": [
     {
-      "url": "Functions/MyFunction.js"
-    },
-    {
-      "url": "Functions/MyFunction2.js"
-    },
-    {
-      "url": "Functions/GetCurrentPicture.js"
+      "url": "Functions/DecodeImage.js"
     }
   ],
   "symbols": {
