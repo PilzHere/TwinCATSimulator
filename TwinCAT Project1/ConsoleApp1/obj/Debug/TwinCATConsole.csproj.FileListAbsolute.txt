@@ -18,3 +18,15 @@ C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\De
 C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csproj.CopyComplete
 C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Users\pilzm\source\repos\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\TwinCAT.Ads.dll
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\TwinCAT.dll
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\bin\Debug\TwinCAT.pdb
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csprojAssemblyReference.cache
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.exe.config
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csproj.CoreCompileInputs.cache
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\TwinCATConsole.csproj.CopyComplete
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\TwinCAT Project1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

@@ -12,7 +12,7 @@
     <HmiTitle>Please enter your Title...</HmiTitle>
     <HmiVerboseLevel>2</HmiVerboseLevel>
     <HmiVersion>1.0.0.0</HmiVersion>
-    <HmiCommunicationServerPort>3000</HmiCommunicationServerPort>
+    <HmiCommunicationServerPort>3001</HmiCommunicationServerPort>
     <HmiLogTcHmiServerMessages>false</HmiLogTcHmiServerMessages>
     <HmiLogDesignerModeComMessages>false</HmiLogDesignerModeComMessages>
     <HmiServerVersion>Latest</HmiServerVersion>
@@ -23,8 +23,8 @@
     <EnableTypeScript>true</EnableTypeScript>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
     <Name>TcHmiProject1</Name>
-    <HmiCommunicationRouterPort>10109</HmiCommunicationRouterPort>
-    <HmiCommunicationServerAuthPort>13000</HmiCommunicationServerAuthPort>
+    <HmiCommunicationRouterPort>10110</HmiCommunicationRouterPort>
+    <HmiCommunicationServerAuthPort>13001</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.746.0</HmiInitial>
     <HmiRecent>1.12.746.0</HmiRecent>
     <HmiServerNodeAdvancedView>False</HmiServerNodeAdvancedView>
@@ -133,25 +133,11 @@
     <Content Include=".eslintrc.json">
       <Visible>false</Visible>
     </Content>
-    <Content Include="Functions\GetCurrentPicture.function.json">
+    <Content Include="Functions\DecodeImage.function.json">
       <SubType>Content</SubType>
-      <DependentUpon>Functions\GetCurrentPicture.js</DependentUpon>
+      <DependentUpon>Functions\DecodeImage.js</DependentUpon>
     </Content>
-    <Content Include="Functions\GetCurrentPicture.js">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Functions\MyFunction.function.json">
-      <SubType>Content</SubType>
-      <DependentUpon>Functions\MyFunction.js</DependentUpon>
-    </Content>
-    <Content Include="Functions\MyFunction.js">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Functions\MyFunction2.function.json">
-      <SubType>Content</SubType>
-      <DependentUpon>Functions\MyFunction2.js</DependentUpon>
-    </Content>
-    <Content Include="Functions\MyFunction2.js">
+    <Content Include="Functions\DecodeImage.js">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Images\AAA\DSC05793.JPG">
@@ -347,6 +333,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Imports\Images\vision-normal.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="KeyboardLayouts\Numpad - indirect.keyboard.json">
       <SubType>Content</SubType>
     </Content>
     <Content Include="LoginPage1.html">

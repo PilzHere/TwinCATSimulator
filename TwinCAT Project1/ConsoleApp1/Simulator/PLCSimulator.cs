@@ -50,19 +50,13 @@ namespace ConsoleApp1
         private TwinCAT.TwinCATVariable<Double> tachom4MinValue = null;
         private TwinCAT.TwinCATVariable<Double> tachom4RealValue = null;
         private TwinCAT.TwinCATVariable<Double> tachom4MaxValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom4MaxOutOfRange = null;
-
-        private TwinCAT.TwinCATVariable<Byte[]> pictureLocation = null;
-        //private TwinCAT.TwinCATVariable<String> pictureLocation2 = null;
+        private TwinCAT.TwinCATVariable<Double> tachom4MaxOutOfRange = null;      
 
         private TwinCAT.TwinCATVariable<Int32> productCount = null;
         private TwinCAT.TwinCATVariable<Int32> productPassed = null;
         private TwinCAT.TwinCATVariable<Int32> productFailed = null;
-
-        //private TwinCAT.TwinCATVariable<String> currentPicture = null;
-
-        private TwinCAT.TwinCATVariable<Int32> currentPictureInt = null;
-        private TwinCAT.TwinCATVariable<Int32> currentPictureInt2 = null;
+   
+        private TwinCAT.TwinCATVariable<Byte[]> imageOfProduct = null;
 
         Recipes.BatteryRecipe recepieInUse = null;
 
@@ -73,39 +67,7 @@ namespace ConsoleApp1
 
         private void SetupVariables()
         {
-            //test
-            pictureLocation = varBuilder.Build<Byte[]>("Task.Outputs.picture");
-            //pictureLocation2 = varBuilder.Build<String>("Task.Outputs.picture2");
-
-            byte[] arrayToSend = new byte[256];
-
-            string text2 = "thisIsTheFilepath.png";
-
-            string text = "thisIsTheFilepath.png";
-            byte[] byteArray = Encoding.Default.GetBytes(text);
-
-            for (int i = 0; i < 256; i++)
-            {
-                if (i < byteArray.Length)
-                    arrayToSend[i] = byteArray[i];
-                else
-                    arrayToSend[i] = 0;
-            }
-
-            Console.WriteLine("1. " + byteArray + " | " + byteArray.Length);
-
-            //pictureLocation2.Polling = true;
-            //pictureLocation2.Value = text2;
-
-            pictureLocation.Polling = true;
-            pictureLocation.Value = arrayToSend;
-
-            pictureLocation.Polling = true;
-            byte[] fromHmi = pictureLocation.Value;
-            Console.WriteLine("2. " + fromHmi + " | " + fromHmi.Length);
-
-            //test end
-
+            
             simulatorState = varBuilder.Build<Boolean>("Task.Outputs.Out1");
             productOpt = varBuilder.Build<Int32>("Task.Outputs.Out2");
 
@@ -137,24 +99,12 @@ namespace ConsoleApp1
             productPassed = varBuilder.Build<Int32>("Task.Outputs.productPassed");
             productFailed = varBuilder.Build<Int32>("Task.Outputs.productFailed");
 
-            //currentPicture = varBuilder.Build<String>("Task.Outputs.currentPicture");
-
-            currentPictureInt = varBuilder.Build<Int32>("Task.Outputs.currentPictureInt");
-            currentPictureInt2 = varBuilder.Build<Int32>("Task.Outputs.currentPictureInt2");
-
-            //string currentPictureLocation = "Images/Beckhoff_Logo.svg";
-
-            //currentPicture.Polling = true;
-            //currentPicture.Value = currentPictureLocation;
-
-            //currentPictureInt.Polling = true;
-
-            //currentPictureInt.Value = 1;
-            //varBuilder.adsClient.WriteAnyString(0, "", 1, Encoding.UTF8);
-
+            imageOfProduct = varBuilder.Build<Byte[]>("Task.Outputs.picture");
 
             // Read in all recipies
             Recipes.RecipeHandler.ReadInAllBatteriesRecipies(allBatteriesRecipiesList);
+
+           
         }
 
         private void SetStartValues(Recipes.BatteryRecipe recepieInUse)
@@ -187,7 +137,7 @@ namespace ConsoleApp1
         }
 
         private void ClearProductCounters()
-        {
+        {           
             productCount.Value = 0;
             productPassed.Value = 0;
             productFailed.Value = 0;
@@ -216,31 +166,23 @@ namespace ConsoleApp1
             int productOption = 0; //TODO: Use an Enum for this. Current supported values are 0-2.
             int oldProductOption = -1;
 
-            bool firstStart = true;
-            //productCount.Value = 0;
-
+            bool firstStart = true;         
 
             while (!Exit)
             {
+                
                 productOpt.Polling = true;
                 productOption = productOpt.Value;
-
+             
                 // set product only when changed.
                 if (productOption != oldProductOption)
-                {
+                {                    
                     ClearProductCounters();
 
                     switch (productOption)
                     {
-                        case 0:
-                            // TODO: remove this. Option will be removed from HMI.
-                            Console.WriteLine("Chosen product: nothing.");
-
-                            firstStart = true;
-                            SetNewSimState(false);
-
-                            break;
-                        case 1: // Simulate AA Batteries
+                      
+                        case 0: // Simulate AA Batteries
                             Console.WriteLine("Chosen product: AA Battery.");
                             recepieInUse = Recipes.RecipeHandler.ReadInRecipie(allBatteriesRecipiesList, 0); // AA
                             SetStartValues(recepieInUse);
@@ -274,7 +216,7 @@ namespace ConsoleApp1
                             tachom4MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTerminalDiameter, 1, MidpointRounding.AwayFromZero);
 
                             break;
-                        case 2:
+                        case 1:
                             Console.WriteLine("Chosen product: AAA Battery.");
 
                             recepieInUse = Recipes.RecipeHandler.ReadInRecipie(allBatteriesRecipiesList, 1); // AAA
@@ -324,10 +266,8 @@ namespace ConsoleApp1
                 // run manufacturing process of chosen product
                 switch (productOption)
                 {
-                    case 0:
-
-                        break;
-                    case 1: // Simulate AA Batteries
+                  
+                    case 0: // Simulate AA Batteries
                         simulatorState.Polling = true;
                         simState = simulatorState.Value;
 
@@ -354,15 +294,11 @@ namespace ConsoleApp1
                         if (simState)
                         {
                             int sleepTime = 250; // ms
-                            int counter = 0;
+                            
 
                             while (true)
                             {
-                                // Picture to show ...
-                                currentPictureInt.Value = counter;
-                                counter++;
-                                if (counter > 25) counter = 0;
-
+                               
                                 // Get a random number for the newly produced battery
                                 double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, 0.1, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
                                 Thread.Sleep(sleepTime); // Sleeping for better random values within one product
@@ -374,15 +310,20 @@ namespace ConsoleApp1
                                 Thread.Sleep(sleepTime);
 
                                 // Produce one battery
+
+                                List<int> AAbatteryList = new List<int> { 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856 };
+                                String path = "Images/AA/";
+                                ShowImage(AAbatteryList, path);
+                             
                                 Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
 
                                 tachom1RealValue.Value = batteryInProduction.TotalLength;
                                 tachom2RealValue.Value = batteryInProduction.TotalDiameter;
                                 tachom3RealValue.Value = batteryInProduction.TerminalLength;
                                 tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
-
-                                //productCount.Value++;
-
+                               
+                                Thread.Sleep(sleepTime);
+                            
                                 // Check if battery is OK or NOK
                                 if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
                                 {
@@ -424,7 +365,7 @@ namespace ConsoleApp1
                         }
 
                         break;
-                    case 2: // Simulate AAA Batteries
+                    case 1: // Simulate AAA Batteries
                         simulatorState.Polling = true;
                         simState = simulatorState.Value;
 
@@ -450,12 +391,11 @@ namespace ConsoleApp1
 
                         if (simState)
                         {
-                            int sleepTime = 50; // ms
+                            int sleepTime = 250; // ms
 
                             while (true)
                             {
-                                currentPictureInt.Value = 2;
-
+                               
                                 // Get a random number for the newly produced battery
                                 double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, 0.1, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
                                 Thread.Sleep(sleepTime); // Sleeping for better random values within one product
@@ -467,6 +407,11 @@ namespace ConsoleApp1
                                 Thread.Sleep(sleepTime);
 
                                 // Produce one battery
+                                
+                                List<int> AAAbatteryList = new List<int> { 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823 };
+                                String path = "Images/AAA/";
+                                ShowImage(AAAbatteryList, path);
+                               
                                 Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
 
                                 tachom1RealValue.Value = batteryInProduction.TotalLength;
@@ -474,8 +419,8 @@ namespace ConsoleApp1
                                 tachom3RealValue.Value = batteryInProduction.TerminalLength;
                                 tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
 
-                                //productCount.Value++;
-
+                                Thread.Sleep(sleepTime);
+                                
                                 // Check if battery is OK or NOK
                                 if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
                                 {
@@ -553,6 +498,27 @@ namespace ConsoleApp1
                 Console.Write(value + " ");
                 Console.ResetColor();
             }
+        }
+        /// <summary>
+        /// Sends imagepath to HMI
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="path"></param>
+        public void ShowImage(List<int> list, String path)
+        {
+            Random random = new Random();
+            int randomIndex = random.Next(0, list.Count);
+            string value = path + "DSC05" + list[randomIndex] + ".JPG";
+            byte[] temp = Encoding.UTF8.GetBytes(value);
+            byte[] toBeSended = new byte[256];
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                toBeSended[i] = temp[i];
+            }
+
+            imageOfProduct.Value = toBeSended;
+        
         }
 
         /// <summary>

@@ -226,8 +226,14 @@
 							<BitOffs>7640</BitOffs>
 							<ExternalAddress>955</ExternalAddress>
 						</Var>
+						<Var>
+							<Name>currentPictureInt2</Name>
+							<Type>DINT</Type>
+							<BitOffs>7672</BitOffs>
+							<ExternalAddress>959</ExternalAddress>
+						</Var>
 					</Vars>
-					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="959">
+					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="963">
 						<Name>Image</Name>
 					</Image>
 				</Task>
