@@ -39,8 +39,8 @@
     "DIAGNOSTICS_DOMAINS": [],
     "DISCOVERY": 2,
     "ENDPOINTS": [
-        "http://127.0.0.1:13001",
-        "http://127.0.0.1:3001"
+        "http://127.0.0.1:13002",
+        "http://127.0.0.1:3002"
     ],
     "ETAGENABLED": true,
     "EXTENSIONS": {
@@ -3209,11 +3209,11 @@
     "USERSELECTTYPE": 0,
     "VIDEOSEGMENTSIZE": 1048576,
     "VIRTUALDIRECTORIES": {
-        "/": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCatsSimulatorLateEdition\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1",
-        "/Beckhoff.TwinCAT.HMI.Controls": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCatsSimulatorLateEdition\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Controls.12.746.0\\runtimes\\native1.12-tchmi",
-        "/Beckhoff.TwinCAT.HMI.Functions": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCatsSimulatorLateEdition\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Functions.12.746.0\\runtimes\\native1.12-tchmi",
-        "/bin": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCatsSimulatorLateEdition\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\",
-        "/bin/framework": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCatsSimulatorLateEdition\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\framework",
-        "/framework": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCatsSimulatorLateEdition\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Framework.12.746.0\\runtimes\\native1.12-tchmi"
+        "/": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1",
+        "/Beckhoff.TwinCAT.HMI.Controls": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Controls.12.746.0\\runtimes\\native1.12-tchmi",
+        "/Beckhoff.TwinCAT.HMI.Functions": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Functions.12.746.0\\runtimes\\native1.12-tchmi",
+        "/bin": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\",
+        "/bin/framework": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\framework",
+        "/framework": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Framework.12.746.0\\runtimes\\native1.12-tchmi"
     }
 }

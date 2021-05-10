@@ -12,3 +12,10 @@ C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\
 C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\obj\Debug\TwinCAT.csproj.CopyComplete
 C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\obj\Debug\TwinCAT.dll
 C:\Users\Staffan\Documents\GitHub\TwinCatsSimulatorLateEdition\TwinCATSimulator\obj\Debug\TwinCAT.pdb
+C:\Users\Staffan\Documents\GitHub\TwinCATSSimulatorRestore\TwinCATSimulator\bin\Debug\TwinCAT.dll
+C:\Users\Staffan\Documents\GitHub\TwinCATSSimulatorRestore\TwinCATSimulator\bin\Debug\TwinCAT.pdb
+C:\Users\Staffan\Documents\GitHub\TwinCATSSimulatorRestore\TwinCATSimulator\obj\Debug\TwinCAT.csprojAssemblyReference.cache
+C:\Users\Staffan\Documents\GitHub\TwinCATSSimulatorRestore\TwinCATSimulator\obj\Debug\TwinCAT.csproj.CoreCompileInputs.cache
+C:\Users\Staffan\Documents\GitHub\TwinCATSSimulatorRestore\TwinCATSimulator\obj\Debug\TwinCAT.csproj.CopyComplete
+C:\Users\Staffan\Documents\GitHub\TwinCATSSimulatorRestore\TwinCATSimulator\obj\Debug\TwinCAT.dll
+C:\Users\Staffan\Documents\GitHub\TwinCATSSimulatorRestore\TwinCATSimulator\obj\Debug\TwinCAT.pdb

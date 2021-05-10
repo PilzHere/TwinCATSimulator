@@ -191,12 +191,6 @@
 							<ExternalAddress>175</ExternalAddress>
 						</Var>
 						<Var>
-							<Name>picture2</Name>
-							<Type>STRING(255)</Type>
-							<BitOffs>3448</BitOffs>
-							<ExternalAddress>431</ExternalAddress>
-						</Var>
-						<Var>
 							<Name>productCount</Name>
 							<Type>DINT</Type>
 							<BitOffs>5496</BitOffs>
@@ -214,26 +208,8 @@
 							<BitOffs>5560</BitOffs>
 							<ExternalAddress>695</ExternalAddress>
 						</Var>
-						<Var>
-							<Name>currentPicture</Name>
-							<Type>STRING(255)</Type>
-							<BitOffs>5592</BitOffs>
-							<ExternalAddress>699</ExternalAddress>
-						</Var>
-						<Var>
-							<Name>currentPictureInt</Name>
-							<Type>DINT</Type>
-							<BitOffs>7640</BitOffs>
-							<ExternalAddress>955</ExternalAddress>
-						</Var>
-						<Var>
-							<Name>currentPictureInt2</Name>
-							<Type>DINT</Type>
-							<BitOffs>7672</BitOffs>
-							<ExternalAddress>959</ExternalAddress>
-						</Var>
 					</Vars>
-					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="963">
+					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="699">
 						<Name>Image</Name>
 					</Image>
 				</Task>
