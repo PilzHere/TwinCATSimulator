@@ -140,7 +140,7 @@ namespace ConsoleApp1
         {
             productCount.Value = 0;
             productPassed.Value = 0;
-            productFailed.Value = 0;
+            productFailed.Value = 0; // Does not update sometimes?
         }
 
         bool simState = false;
@@ -165,7 +165,7 @@ namespace ConsoleApp1
         {
             int productOption = 0; //TODO: Use an Enum for this. Current supported values are 0-2.
             int oldProductOption = -1;
-            bool firstStart = true;           
+            bool firstStart = true;
 
             while (!Exit)
             {
@@ -230,7 +230,6 @@ namespace ConsoleApp1
                 // run manufacturing process of chosen product
                 switch (productOption)
                 {
-
                     case 0: // Simulate AA Batteries
                         simulatorState.Polling = true;
                         simState = simulatorState.Value;
@@ -244,6 +243,7 @@ namespace ConsoleApp1
                                 if (firstStart)
                                 {
                                     ClearOKAndNOKBatteriesLists();
+                                    ClearProductCounters();
                                     firstStart = false;
                                 }
                             }
@@ -257,8 +257,17 @@ namespace ConsoleApp1
 
                         if (simState)
                         {
+                            bool toBreakIfPaused = false;
+
                             while (true)
                             {
+                                simulatorState.Polling = true;
+                                simState = simulatorState.Value;
+                                if (!simState)
+                                {
+                                    toBreakIfPaused = true;
+                                    break;
+                                }
 
                                 // Get a random number for the newly produced battery
                                 double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, randomRange, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
@@ -321,8 +330,12 @@ namespace ConsoleApp1
                             }
 
                             PrintProductOKNOKData();
+                            if (toBreakIfPaused) break;
+
                             SetNewSimState(false);
                             firstStart = true;
+
+                            //Console.WriteLine("This line should NOT be printed if paused...");
                         }
 
                         break;
@@ -339,6 +352,7 @@ namespace ConsoleApp1
                                 if (firstStart)
                                 {
                                     ClearOKAndNOKBatteriesLists();
+                                    ClearProductCounters();
                                     firstStart = false;
                                 }
                             }
@@ -352,8 +366,17 @@ namespace ConsoleApp1
 
                         if (simState)
                         {
+                            bool toBreakIfPaused = false;
+
                             while (true)
                             {
+                                simulatorState.Polling = true;
+                                simState = simulatorState.Value;
+                                if (!simState)
+                                {
+                                    toBreakIfPaused = true;
+                                    break;
+                                }
 
                                 // Get a random number for the newly produced battery
                                 double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, randomRange, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
@@ -416,9 +439,14 @@ namespace ConsoleApp1
                             }
 
                             PrintProductOKNOKData();
+                            if (toBreakIfPaused) break;
+
                             SetNewSimState(false);
                             firstStart = true;
+
+                            //Console.WriteLine("This line should NOT be printed if paused...");
                         }
+
                         break;
                     default:
                         Console.WriteLine("That is not an option. 2");
