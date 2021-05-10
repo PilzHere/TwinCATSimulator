@@ -12,7 +12,7 @@
     <HmiTitle>Please enter your Title...</HmiTitle>
     <HmiVerboseLevel>2</HmiVerboseLevel>
     <HmiVersion>1.0.0.0</HmiVersion>
-    <HmiCommunicationServerPort>3001</HmiCommunicationServerPort>
+    <HmiCommunicationServerPort>3002</HmiCommunicationServerPort>
     <HmiLogTcHmiServerMessages>false</HmiLogTcHmiServerMessages>
     <HmiLogDesignerModeComMessages>false</HmiLogDesignerModeComMessages>
     <HmiServerVersion>Latest</HmiServerVersion>
@@ -23,8 +23,8 @@
     <EnableTypeScript>true</EnableTypeScript>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
     <Name>TcHmiProject1</Name>
-    <HmiCommunicationRouterPort>10110</HmiCommunicationRouterPort>
-    <HmiCommunicationServerAuthPort>13001</HmiCommunicationServerAuthPort>
+    <HmiCommunicationRouterPort>10111</HmiCommunicationRouterPort>
+    <HmiCommunicationServerAuthPort>13002</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.746.0</HmiInitial>
     <HmiRecent>1.12.746.0</HmiRecent>
     <HmiServerNodeAdvancedView>False</HmiServerNodeAdvancedView>
@@ -120,6 +120,7 @@
     <Folder Include="Images\Manifest" />
     <Folder Include="Images\AA" />
     <Folder Include="Images\AAA" />
+    <Folder Include="Images\Blank" />
     <Folder Include="Imports" />
     <Folder Include="Imports\Images" />
     <Folder Include="Imports\Videos" />
@@ -330,6 +331,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Images\AA\DSC05856.JPG">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Blank\DSC05857.JPG">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Imports\Images\vision-normal.svg">
