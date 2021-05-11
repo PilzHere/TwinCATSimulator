@@ -1,0 +1,42 @@
+﻿{
+  "function": {
+    "name": "StringToInt",
+    "namespace": "TcHmi.Functions.TcHmiProject1",
+    "displayName": "StringToInt",
+    "description": "",
+    "waitMode": "Synchronous",
+    "category": "",
+    "returnValue": {
+      "type": "tchmi:general#/definitions/String"
+    },
+    "visible": true,
+    "injectContextObject": false,
+    "arguments": [
+      {
+        "name": "par1",
+        "displayName": "Parameter",
+        "type": "tchmi:general#/definitions/Number",
+        "description": "This is an important Parameter which does... This text is used in a tooltip.",
+        "defaultValue": null,
+        "required": false,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      },
+      {
+        "name": "string1",
+        "displayName": "Parameter",
+        "type": "tchmi:general#/definitions/String",
+        "description": "The string that should be parsed to int.",
+        "defaultValue": "",
+        "required": true,
+        "bindable": true,
+        "restParameter": false,
+        "asReference": false,
+        "allowControlAttributeBindingOptions": false
+      }
+    ]
+  },
+  "$schema": "../.hmiframework/Schema/FunctionDescription.Schema.json"
+}

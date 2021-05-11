@@ -208,8 +208,14 @@
 							<BitOffs>5560</BitOffs>
 							<ExternalAddress>695</ExternalAddress>
 						</Var>
+						<Var>
+							<Name>productsToCreate</Name>
+							<Type>DINT</Type>
+							<BitOffs>5592</BitOffs>
+							<ExternalAddress>699</ExternalAddress>
+						</Var>
 					</Vars>
-					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="699">
+					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="703">
 						<Name>Image</Name>
 					</Image>
 				</Task>
