@@ -124,6 +124,13 @@
             "SYMBOLS": {},
             "USE_WHITELISTING": false
         },
+        "productsToCreate": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
         "tachom1MaxOutOfRange": {
             "ENABLED": true,
             "NETID": "127.0.0.1.1.1",

@@ -2854,6 +2854,16 @@
             },
             "USEMAPPING": true
         },
+        "productsToCreate.Task.Outputs.productsToCreate": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "productsToCreate::Task::Outputs::productsToCreate",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
         "tachom1MaxOutOfRange.Task.Outputs.tachom1MaxOutOfRange": {
             "ACCESS": 3,
             "CUSTOMERDATA": "",
@@ -3209,11 +3219,11 @@
     "USERSELECTTYPE": 0,
     "VIDEOSEGMENTSIZE": 1048576,
     "VIRTUALDIRECTORIES": {
-        "/": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1",
-        "/Beckhoff.TwinCAT.HMI.Controls": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Controls.12.746.0\\runtimes\\native1.12-tchmi",
-        "/Beckhoff.TwinCAT.HMI.Functions": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Functions.12.746.0\\runtimes\\native1.12-tchmi",
-        "/bin": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\",
-        "/bin/framework": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\framework",
-        "/framework": "C:\\Users\\Staffan\\Documents\\GitHub\\TwinCATSSimulatorRestore\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Framework.12.746.0\\runtimes\\native1.12-tchmi"
+        "/": "C:\\Users\\pilzm\\source\\repos\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1",
+        "/Beckhoff.TwinCAT.HMI.Controls": "C:\\Users\\pilzm\\source\\repos\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Controls.12.746.0\\runtimes\\native1.12-tchmi",
+        "/Beckhoff.TwinCAT.HMI.Functions": "C:\\Users\\pilzm\\source\\repos\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Functions.12.746.0\\runtimes\\native1.12-tchmi",
+        "/bin": "C:\\Users\\pilzm\\source\\repos\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\",
+        "/bin/framework": "C:\\Users\\pilzm\\source\\repos\\TwinCATSimulator\\TwinCAT Project1\\TcHmiProject1\\bin\\framework",
+        "/framework": "C:\\Users\\pilzm\\source\\repos\\TwinCATSimulator\\TwinCAT Project1\\Packages\\Beckhoff.TwinCAT.HMI.Framework.12.746.0\\runtimes\\native1.12-tchmi"
     }
 }

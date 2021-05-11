@@ -56,6 +56,8 @@ namespace ConsoleApp1
         private TwinCAT.TwinCATVariable<Int32> productPassed = null;
         private TwinCAT.TwinCATVariable<Int32> productFailed = null;
 
+        private TwinCAT.TwinCATVariable<Int32> productsToCreate = null;
+
         private TwinCAT.TwinCATVariable<Byte[]> imageOfProduct = null;
 
         Recipes.BatteryRecipe recepieInUse = null;
@@ -63,7 +65,7 @@ namespace ConsoleApp1
         // Set start values for product in use
         double startValueTotalLength, startValueTotalDiameter, startValueTerminalLength, startValueTerminalDiameter;
 
-        int itemsToProduce = 10; //TODO: should be input from HMI.
+        //int itemsToProduce = 10; //TODO: should be input from HMI.
 
         private void SetupVariables()
         {
@@ -98,6 +100,8 @@ namespace ConsoleApp1
             productCount = varBuilder.Build<Int32>("Task.Outputs.productCount");
             productPassed = varBuilder.Build<Int32>("Task.Outputs.productPassed");
             productFailed = varBuilder.Build<Int32>("Task.Outputs.productFailed");
+
+            productsToCreate = varBuilder.Build<Int32>("Task.Outputs.productsToCreate");
 
             imageOfProduct = varBuilder.Build<Byte[]>("Task.Outputs.picture");
 
@@ -169,6 +173,8 @@ namespace ConsoleApp1
 
             while (!Exit)
             {
+                productsToCreate.Polling = true;
+
                 productOpt.Polling = true;
                 productOption = productOpt.Value;
 
@@ -227,231 +233,239 @@ namespace ConsoleApp1
                     oldProductOption = productOption;
                 }
 
-                // run manufacturing process of chosen product
-                switch (productOption)
+                if (productsToCreate.Value > 0) // Cant create products less than 1.
                 {
-                    case 0: // Simulate AA Batteries
-                        simulatorState.Polling = true;
-                        simState = simulatorState.Value;
 
-                        if (simState != oldSimState)
-                        {
-                            if (simState)
+                    // run manufacturing process of chosen product
+                    switch (productOption)
+                    {
+                        case 0: // Simulate AA Batteries
+                            simulatorState.Polling = true;
+                            simState = simulatorState.Value;
+
+                            if (simState != oldSimState)
                             {
-                                Console.WriteLine("STARTED AA Batteries!");
-
-                                if (firstStart)
+                                if (simState)
                                 {
-                                    ClearOKAndNOKBatteriesLists();
-                                    ClearProductCounters();
-                                    firstStart = false;
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("PAUSED AA Batteries!");
-                            }
+                                    Console.WriteLine("STARTED AA Batteries!");
+                                    productsToCreate.Polling = true;
+                                    Console.WriteLine("Products to create: " + productsToCreate.Value);
 
-                            oldSimState = simState;
-                        }
-
-                        if (simState)
-                        {
-                            bool toBreakIfPaused = false;
-
-                            while (true)
-                            {
-                                simulatorState.Polling = true;
-                                simState = simulatorState.Value;
-                                if (!simState)
-                                {
-                                    toBreakIfPaused = true;
-                                    break;
-                                }
-
-                                // Get a random number for the newly produced battery
-                                double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, randomRange, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
-                                Thread.Sleep(randomSleepTime); // Sleeping for better random values within one product
-                                double tempValueTotalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTotalDiameter, randomRange, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter);
-                                Thread.Sleep(randomSleepTime);
-                                double tempValueTerminalLength = Maths.Maths.GetRandomNumberWithRange(startValueTerminalLength, randomRange, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength);
-                                Thread.Sleep(randomSleepTime);
-                                double tempValueTerminalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTerminalDiameter, randomRange, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
-                                Thread.Sleep(randomSleepTime);
-
-                                // Produce one battery
-
-                                List<int> AAbatteryList = new List<int> { 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856 };
-                                String path = "Images/AA/";
-                                ShowImage(AAbatteryList, path);
-
-                                Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
-
-                                tachom1RealValue.Value = batteryInProduction.TotalLength;
-                                tachom2RealValue.Value = batteryInProduction.TotalDiameter;
-                                tachom3RealValue.Value = batteryInProduction.TerminalLength;
-                                tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
-
-                                Thread.Sleep(productSleepTime);
-
-                                // Check if battery is OK or NOK
-                                if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
-                                {
-                                    okBatteriesProducedList.Add(batteryInProduction);
-                                    productPassed.Value = okBatteriesProducedList.Count;
+                                    if (firstStart)
+                                    {
+                                        ClearOKAndNOKBatteriesLists();
+                                        ClearProductCounters();
+                                        firstStart = false;
+                                    }
                                 }
                                 else
                                 {
-                                    nokBatteriesProducedList.Add(batteryInProduction);
-                                    productFailed.Value = nokBatteriesProducedList.Count;
+                                    Console.WriteLine("PAUSED AA Batteries!");
                                 }
 
-                                productCount.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
-
-                                // Print out values for each measure of the battery
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength), tempValueTotalLength);
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter), tempValueTotalDiameter);
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength), tempValueTerminalLength);
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter), tempValueTerminalDiameter);
-
-                                // New line for the next products printout
-                                Console.WriteLine();
-
-                                SetStartValues(tempValueTotalLength, tempValueTotalDiameter, tempValueTerminalLength, tempValueTerminalDiameter);
-
-                                if (okBatteriesProducedList.Count == itemsToProduce)
-                                {
-                                    tachom1RealValue.Value = 0;
-                                    tachom2RealValue.Value = 0;
-                                    tachom3RealValue.Value = 0;
-                                    tachom4RealValue.Value = 0;
-                                    break;
-                                }
+                                oldSimState = simState;
                             }
 
-                            PrintProductOKNOKData();
-                            if (toBreakIfPaused) break;
-
-                            SetNewSimState(false);
-                            firstStart = true;
-
-                            //Console.WriteLine("This line should NOT be printed if paused...");
-                        }
-
-                        break;
-                    case 1: // Simulate AAA Batteries
-                        simulatorState.Polling = true;
-                        simState = simulatorState.Value;
-
-                        if (simState != oldSimState)
-                        {
                             if (simState)
                             {
-                                Console.WriteLine("STARTED AAA Batteries!");
+                                bool toBreakIfPaused = false;
 
-                                if (firstStart)
+                                while (true)
                                 {
-                                    ClearOKAndNOKBatteriesLists();
-                                    ClearProductCounters();
-                                    firstStart = false;
+                                    simulatorState.Polling = true;
+                                    simState = simulatorState.Value;
+                                    if (!simState)
+                                    {
+                                        toBreakIfPaused = true;
+                                        break;
+                                    }
+
+                                    // Get a random number for the newly produced battery
+                                    double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, randomRange, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
+                                    Thread.Sleep(randomSleepTime); // Sleeping for better random values within one product
+                                    double tempValueTotalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTotalDiameter, randomRange, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter);
+                                    Thread.Sleep(randomSleepTime);
+                                    double tempValueTerminalLength = Maths.Maths.GetRandomNumberWithRange(startValueTerminalLength, randomRange, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength);
+                                    Thread.Sleep(randomSleepTime);
+                                    double tempValueTerminalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTerminalDiameter, randomRange, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
+                                    Thread.Sleep(randomSleepTime);
+
+                                    // Produce one battery
+
+                                    List<int> AAbatteryList = new List<int> { 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856 };
+                                    String path = "Images/AA/";
+                                    ShowImage(AAbatteryList, path);
+
+                                    Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
+
+                                    tachom1RealValue.Value = batteryInProduction.TotalLength;
+                                    tachom2RealValue.Value = batteryInProduction.TotalDiameter;
+                                    tachom3RealValue.Value = batteryInProduction.TerminalLength;
+                                    tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
+
+                                    Thread.Sleep(productSleepTime);
+
+                                    // Check if battery is OK or NOK
+                                    if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
+                                    {
+                                        okBatteriesProducedList.Add(batteryInProduction);
+                                        productPassed.Value = okBatteriesProducedList.Count;
+                                    }
+                                    else
+                                    {
+                                        nokBatteriesProducedList.Add(batteryInProduction);
+                                        productFailed.Value = nokBatteriesProducedList.Count;
+                                    }
+
+                                    productCount.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
+
+                                    // Print out values for each measure of the battery
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength), tempValueTotalLength);
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter), tempValueTotalDiameter);
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength), tempValueTerminalLength);
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter), tempValueTerminalDiameter);
+
+                                    // New line for the next products printout
+                                    Console.WriteLine();
+
+                                    SetStartValues(tempValueTotalLength, tempValueTotalDiameter, tempValueTerminalLength, tempValueTerminalDiameter);
+
+                                    if (okBatteriesProducedList.Count == productsToCreate.Value)
+                                    {
+                                        tachom1RealValue.Value = 0;
+                                        tachom2RealValue.Value = 0;
+                                        tachom3RealValue.Value = 0;
+                                        tachom4RealValue.Value = 0;
+                                        break;
+                                    }
                                 }
+
+                                PrintProductOKNOKData();
+                                if (toBreakIfPaused) break;
+
+                                SetNewSimState(false);
+                                firstStart = true;
+
+                                //Console.WriteLine("This line should NOT be printed if paused...");
                             }
-                            else
+
+                            break;
+                        case 1: // Simulate AAA Batteries
+                            simulatorState.Polling = true;
+                            simState = simulatorState.Value;
+
+                            if (simState != oldSimState)
                             {
-                                Console.WriteLine("PAUSED AAA Batteries!");
-                            }
-
-                            oldSimState = simState;
-                        }
-
-                        if (simState)
-                        {
-                            bool toBreakIfPaused = false;
-
-                            while (true)
-                            {
-                                simulatorState.Polling = true;
-                                simState = simulatorState.Value;
-                                if (!simState)
+                                if (simState)
                                 {
-                                    toBreakIfPaused = true;
-                                    break;
-                                }
+                                    Console.WriteLine("STARTED AAA Batteries!");
+                                    productsToCreate.Polling = true;
+                                    Console.WriteLine("Products to create: " + productsToCreate.Value);
 
-                                // Get a random number for the newly produced battery
-                                double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, randomRange, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
-                                Thread.Sleep(randomSleepTime); // Sleeping for better random values within one product
-                                double tempValueTotalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTotalDiameter, randomRange, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter);
-                                Thread.Sleep(randomSleepTime);
-                                double tempValueTerminalLength = Maths.Maths.GetRandomNumberWithRange(startValueTerminalLength, randomRange, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength);
-                                Thread.Sleep(randomSleepTime);
-                                double tempValueTerminalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTerminalDiameter, randomRange, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
-                                Thread.Sleep(randomSleepTime);
-
-                                // Produce one battery
-
-                                List<int> AAAbatteryList = new List<int> { 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823 };
-                                String path = "Images/AAA/";
-                                ShowImage(AAAbatteryList, path);
-
-                                Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
-
-                                tachom1RealValue.Value = batteryInProduction.TotalLength;
-                                tachom2RealValue.Value = batteryInProduction.TotalDiameter;
-                                tachom3RealValue.Value = batteryInProduction.TerminalLength;
-                                tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
-
-                                Thread.Sleep(productSleepTime);
-
-                                // Check if battery is OK or NOK
-                                if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
-                                {
-                                    okBatteriesProducedList.Add(batteryInProduction);
-                                    productPassed.Value = okBatteriesProducedList.Count;
+                                    if (firstStart)
+                                    {
+                                        ClearOKAndNOKBatteriesLists();
+                                        ClearProductCounters();
+                                        firstStart = false;
+                                    }
                                 }
                                 else
                                 {
-                                    nokBatteriesProducedList.Add(batteryInProduction);
-                                    productFailed.Value = nokBatteriesProducedList.Count;
+                                    Console.WriteLine("PAUSED AAA Batteries!");
                                 }
 
-                                productCount.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
-
-                                // Print out values for each measure of the battery
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength), tempValueTotalLength);
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter), tempValueTotalDiameter);
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength), tempValueTerminalLength);
-                                PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter), tempValueTerminalDiameter);
-
-                                // New line for the next products printout
-                                Console.WriteLine();
-
-                                SetStartValues(tempValueTotalLength, tempValueTotalDiameter, tempValueTerminalLength, tempValueTerminalDiameter);
-
-                                if (okBatteriesProducedList.Count == itemsToProduce)
-                                {
-                                    tachom1RealValue.Value = 0;
-                                    tachom2RealValue.Value = 0;
-                                    tachom3RealValue.Value = 0;
-                                    tachom4RealValue.Value = 0;
-                                    break;
-                                }
+                                oldSimState = simState;
                             }
 
-                            PrintProductOKNOKData();
-                            if (toBreakIfPaused) break;
+                            if (simState)
+                            {
+                                bool toBreakIfPaused = false;
 
-                            SetNewSimState(false);
-                            firstStart = true;
+                                while (true)
+                                {
+                                    simulatorState.Polling = true;
+                                    simState = simulatorState.Value;
+                                    if (!simState)
+                                    {
+                                        toBreakIfPaused = true;
+                                        break;
+                                    }
 
-                            //Console.WriteLine("This line should NOT be printed if paused...");
-                        }
+                                    // Get a random number for the newly produced battery
+                                    double tempValueTotalLength = Maths.Maths.GetRandomNumberWithRange(startValueTotalLength, randomRange, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength);
+                                    Thread.Sleep(randomSleepTime); // Sleeping for better random values within one product
+                                    double tempValueTotalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTotalDiameter, randomRange, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter);
+                                    Thread.Sleep(randomSleepTime);
+                                    double tempValueTerminalLength = Maths.Maths.GetRandomNumberWithRange(startValueTerminalLength, randomRange, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength);
+                                    Thread.Sleep(randomSleepTime);
+                                    double tempValueTerminalDiameter = Maths.Maths.GetRandomNumberWithRange(startValueTerminalDiameter, randomRange, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
+                                    Thread.Sleep(randomSleepTime);
 
-                        break;
-                    default:
-                        Console.WriteLine("That is not an option. 2");
+                                    // Produce one battery
 
-                        break;
+                                    List<int> AAAbatteryList = new List<int> { 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823 };
+                                    String path = "Images/AAA/";
+                                    ShowImage(AAAbatteryList, path);
+
+                                    Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
+
+                                    tachom1RealValue.Value = batteryInProduction.TotalLength;
+                                    tachom2RealValue.Value = batteryInProduction.TotalDiameter;
+                                    tachom3RealValue.Value = batteryInProduction.TerminalLength;
+                                    tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
+
+                                    Thread.Sleep(productSleepTime);
+
+                                    // Check if battery is OK or NOK
+                                    if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
+                                    {
+                                        okBatteriesProducedList.Add(batteryInProduction);
+                                        productPassed.Value = okBatteriesProducedList.Count;
+                                    }
+                                    else
+                                    {
+                                        nokBatteriesProducedList.Add(batteryInProduction);
+                                        productFailed.Value = nokBatteriesProducedList.Count;
+                                    }
+
+                                    productCount.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
+
+                                    // Print out values for each measure of the battery
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength), tempValueTotalLength);
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter), tempValueTotalDiameter);
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength), tempValueTerminalLength);
+                                    PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter), tempValueTerminalDiameter);
+
+                                    // New line for the next products printout
+                                    Console.WriteLine();
+
+                                    SetStartValues(tempValueTotalLength, tempValueTotalDiameter, tempValueTerminalLength, tempValueTerminalDiameter);
+
+                                    if (okBatteriesProducedList.Count == productsToCreate.Value)
+                                    {
+                                        tachom1RealValue.Value = 0;
+                                        tachom2RealValue.Value = 0;
+                                        tachom3RealValue.Value = 0;
+                                        tachom4RealValue.Value = 0;
+                                        break;
+                                    }
+                                }
+
+                                PrintProductOKNOKData();
+                                if (toBreakIfPaused) break;
+
+                                SetNewSimState(false);
+                                firstStart = true;
+
+                                //Console.WriteLine("This line should NOT be printed if paused...");
+                            }
+
+                            break;
+                        default:
+                            Console.WriteLine("That is not an option. 2");
+
+                            break;
+                    }
                 }
             }
 
