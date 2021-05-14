@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1.Recipes
 {
     class BatteryRecipe
     {
-        private String productName;
+        private string productName;
         private double startValueTotalLength, minValueTotalLength, maxValueTotalLength;
         private double startValueTotalDiameter, minValueTotalDiameter, maxValueTotalDiameter;
         private double startValueTerminalLength, minValueTerminalLength, maxValueTerminalLength;
@@ -19,31 +15,31 @@ namespace ConsoleApp1.Recipes
         private double tachometerMinValueTerminalLength, tachometerMaxValueTerminalLength;
         private double tachometerMinValueTerminalDiameter, tachometerMaxValueTerminalDiameter;
 
-        public BatteryRecipe(String productName, double startValueTotalLength, double minValueTotalLength, double maxValueTotalLength, double startValueTotalDiameter, double minValueTotalDiameter, double maxValueTotalDiameter, double startValueTerminalLength, double minValueTerminalLength, double maxValueTerminalLength, double startValueTerminalDiameter, double minValueTerminalDiameter, double maxValueTerminalDiameter)
+        public BatteryRecipe(string productName, double startValueTotalLength, double minValueTotalLength, double maxValueTotalLength, double startValueTotalDiameter, double minValueTotalDiameter, double maxValueTotalDiameter, double startValueTerminalLength, double minValueTerminalLength, double maxValueTerminalLength, double startValueTerminalDiameter, double minValueTerminalDiameter, double maxValueTerminalDiameter)
         {
-            this.ProductName = productName;
-            this.StartValueTotalLength = startValueTotalLength;
-            this.MinValueTotalLength = minValueTotalLength;
-            this.MaxValueTotalLength = maxValueTotalLength;
-            this.StartValueTotalDiameter = startValueTotalDiameter;
-            this.MinValueTotalDiameter = minValueTotalDiameter;
-            this.MaxValueTotalDiameter = maxValueTotalDiameter;
-            this.StartValueTerminalLength = startValueTerminalLength;
-            this.MinValueTerminalLength = minValueTerminalLength;
-            this.MaxValueTerminalLength = maxValueTerminalLength;
-            this.StartValueTerminalDiameter = startValueTerminalDiameter;
-            this.MinValueTerminalDiameter = minValueTerminalDiameter;
-            this.MaxValueTerminalDiameter = maxValueTerminalDiameter;
+            ProductName = productName;
+            StartValueTotalLength = startValueTotalLength;
+            MinValueTotalLength = minValueTotalLength;
+            MaxValueTotalLength = maxValueTotalLength;
+            StartValueTotalDiameter = startValueTotalDiameter;
+            MinValueTotalDiameter = minValueTotalDiameter;
+            MaxValueTotalDiameter = maxValueTotalDiameter;
+            StartValueTerminalLength = startValueTerminalLength;
+            MinValueTerminalLength = minValueTerminalLength;
+            MaxValueTerminalLength = maxValueTerminalLength;
+            StartValueTerminalDiameter = startValueTerminalDiameter;
+            MinValueTerminalDiameter = minValueTerminalDiameter;
+            MaxValueTerminalDiameter = maxValueTerminalDiameter;
 
             double outOfRangeValue = 0.2;
-            this.tachometerMinValueTotalLength = minValueTotalLength - outOfRangeValue;
-            this.tachometerMaxValueTotalLength = maxValueTotalLength + outOfRangeValue;
-            this.tachometerMinValueTotalDiameter = minValueTotalDiameter - outOfRangeValue;
-            this.tachometerMaxValueTotalDiameter = maxValueTotalDiameter + outOfRangeValue;
-            this.tachometerMinValueTerminalLength = minValueTerminalLength - outOfRangeValue;
-            this.tachometerMaxValueTerminalLength = maxValueTerminalLength + outOfRangeValue;
-            this.tachometerMinValueTerminalDiameter = minValueTerminalDiameter - outOfRangeValue;
-            this.tachometerMaxValueTerminalDiameter = maxValueTerminalDiameter + outOfRangeValue;
+            tachometerMinValueTotalLength = minValueTotalLength - outOfRangeValue;
+            tachometerMaxValueTotalLength = maxValueTotalLength + outOfRangeValue;
+            tachometerMinValueTotalDiameter = minValueTotalDiameter - outOfRangeValue;
+            tachometerMaxValueTotalDiameter = maxValueTotalDiameter + outOfRangeValue;
+            tachometerMinValueTerminalLength = minValueTerminalLength - outOfRangeValue;
+            tachometerMaxValueTerminalLength = maxValueTerminalLength + outOfRangeValue;
+            tachometerMinValueTerminalDiameter = minValueTerminalDiameter - outOfRangeValue;
+            tachometerMaxValueTerminalDiameter = maxValueTerminalDiameter + outOfRangeValue;
         }
 
         public string ProductName { get; private set; }

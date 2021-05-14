@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ConsoleApp1.Batteries
 {
@@ -15,18 +11,18 @@ namespace ConsoleApp1.Batteries
 
         public BatteryInProduction(double totalLength, double minValueTotalLength, double maxValueTotalLength, double totalDiameter, double minValueTotalDiameter, double maxValueTotalDiameter, double terminalLength, double minValueTerminalLength, double maxValueTerminalLength, double terminalDiameter, double minValueTerminalDiameter, double maxValueTerminalDiameter)
         {
-            this.TotalLength = totalLength;
-            this.MinValueTotalLength = minValueTotalLength;
-            this.MaxValueTotalLength = maxValueTotalLength;
-            this.TotalDiameter = totalDiameter;
-            this.MinValueTotalDiameter = minValueTotalDiameter;
-            this.MaxValueTotalDiameter = maxValueTotalDiameter;
-            this.TerminalLength = terminalLength;
-            this.MinValueTerminalLength = minValueTerminalLength;
-            this.MaxValueTerminalLength = maxValueTerminalLength;
-            this.TerminalDiameter = terminalDiameter;
-            this.MinValueTerminalDiameter = minValueTerminalDiameter;
-            this.MaxValueTerminalDiameter = maxValueTerminalDiameter;
+            TotalLength = totalLength;
+            MinValueTotalLength = minValueTotalLength;
+            MaxValueTotalLength = maxValueTotalLength;
+            TotalDiameter = totalDiameter;
+            MinValueTotalDiameter = minValueTotalDiameter;
+            MaxValueTotalDiameter = maxValueTotalDiameter;
+            TerminalLength = terminalLength;
+            MinValueTerminalLength = minValueTerminalLength;
+            MaxValueTerminalLength = maxValueTerminalLength;
+            TerminalDiameter = terminalDiameter;
+            MinValueTerminalDiameter = minValueTerminalDiameter;
+            MaxValueTerminalDiameter = maxValueTerminalDiameter;
         }
 
         public double TotalLength { get => totalLength; set => totalLength = value; }

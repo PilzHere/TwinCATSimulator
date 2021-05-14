@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1.Recipes
 {
@@ -17,7 +14,7 @@ namespace ConsoleApp1.Recipes
 
         public static BatteryRecipe ReadInRecipie(List<BatteryRecipe> list, int index)
         {
-            String productName = list.ElementAt(index).ProductName;
+            string productName = list.ElementAt(index).ProductName;
             double startValueTotalLength = list.ElementAt(index).StartValueTotalLength;
             double minValueTotalLength = list.ElementAt(index).MinValueTotalLength;
             double maxValueTotalLength = list.ElementAt(index).MaxValueTotalLength;

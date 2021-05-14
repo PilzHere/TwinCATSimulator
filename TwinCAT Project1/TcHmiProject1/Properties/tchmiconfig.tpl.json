@@ -43,6 +43,11 @@
       "name": "Functions/StringToInt.js",
       "description": "",
       "type": "JavaScript"
+    },
+    {
+      "name": "Functions/GetMousePositionInPictureX.js",
+      "description": "",
+      "type": "JavaScript"
     }
   ],
   "userControls": [],
@@ -60,6 +65,9 @@
     },
     {
       "url": "Functions/StringToInt.js"
+    },
+    {
+      "url": "Functions/GetMousePositionInPictureX.js"
     }
   ],
   "symbols": {

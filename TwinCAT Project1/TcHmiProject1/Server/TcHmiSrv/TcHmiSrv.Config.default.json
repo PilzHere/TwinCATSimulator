@@ -2797,6 +2797,16 @@
             },
             "USEMAPPING": true
         },
+        "mousePosX.Task.Outputs.mousePosX": {
+            "ACCESS": 3,
+            "CUSTOMERDATA": "",
+            "DOMAIN": "ADS",
+            "MAPPING": "mousePosX::Task::Outputs::mousePosX",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/DINT"
+            },
+            "USEMAPPING": true
+        },
         "picture.Task.Outputs.picture": {
             "ACCESS": 3,
             "CUSTOMERDATA": "",
