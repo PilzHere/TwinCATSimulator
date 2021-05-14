@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1.Maths
 {
@@ -57,14 +53,8 @@ namespace ConsoleApp1.Maths
         /// <returns>true or false</returns>
         public static bool CheckIfValueIsWithinRange(double value, double minValue, double maxValue)
         {
-            if (value >= minValue && value <= maxValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (value >= minValue && value <= maxValue) return true;
+            else return false;
         }
 
         public static bool CheckIfBatteryValuesAreOK(Batteries.BatteryInProduction batteryInProduction)
@@ -73,13 +63,9 @@ namespace ConsoleApp1.Maths
             CheckIfValueIsWithinRange(batteryInProduction.TerminalLength, batteryInProduction.MinValueTerminalLength, batteryInProduction.MaxValueTerminalLength) &&
             CheckIfValueIsWithinRange(batteryInProduction.TotalDiameter, batteryInProduction.MinValueTotalDiameter, batteryInProduction.MaxValueTotalDiameter) &&
             CheckIfValueIsWithinRange(batteryInProduction.TerminalDiameter, batteryInProduction.MinValueTerminalDiameter, batteryInProduction.MaxValueTerminalDiameter))
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
     }
 }

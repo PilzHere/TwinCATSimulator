@@ -9,6 +9,5 @@
             TotalLength = 44.5f;
             TerminalLength = 1.3f;
         }
-
     }
 }

@@ -89,6 +89,20 @@
             "SYMBOLS": {},
             "USE_WHITELISTING": false
         },
+        "mousePosX": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
+        "mousePosY": {
+            "ENABLED": true,
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 301,
+            "SYMBOLS": {},
+            "USE_WHITELISTING": false
+        },
         "picture": {
             "ENABLED": true,
             "NETID": "127.0.0.1.1.1",

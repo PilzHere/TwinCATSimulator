@@ -54,7 +54,7 @@
     <Compile Include="Maths\Maths.cs" />
     <Compile Include="Recipes\BatteryRecipe.cs" />
     <Compile Include="Recipes\RecipeHandler.cs" />
-    <Compile Include="Simulator\PLCSimulator.cs" />
+    <Compile Include="Simulator\Simulator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

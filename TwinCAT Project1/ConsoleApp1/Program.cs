@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            PLCSimulator pLCSimulator = new PLCSimulator();
+            Simulator pLCSimulator = new Simulator();
         }
     }
 }

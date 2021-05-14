@@ -1,114 +1,87 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using System.Threading;
 
 namespace ConsoleApp1
 {
-    class PLCSimulator
+    class Simulator
     {
         private bool exit;
 
         public bool Exit { get => exit; set => exit = value; }
 
-        public PLCSimulator() // TODO: maybe change name?
+        public Simulator()
         {
-            ConnectToPLC();
+            ConnectToADS();
             SetupVariables();
-            RunLoop();
+            Run();
         }
 
-        List<Recipes.BatteryRecipe> allBatteriesRecipiesList = new List<Recipes.BatteryRecipe>();
-        List<Batteries.BatteryInProduction> okBatteriesProducedList = new List<Batteries.BatteryInProduction>();
-        List<Batteries.BatteryInProduction> nokBatteriesProducedList = new List<Batteries.BatteryInProduction>();
+        private Recipes.BatteryRecipe recepieInUse = null;
 
-        private TwinCAT.TwinCATVariableBuilder varBuilder = null;
+        private List<Recipes.BatteryRecipe> allBatteriesRecipiesList = new List<Recipes.BatteryRecipe>();
+        private List<Batteries.BatteryInProduction> okBatteriesProducedList = new List<Batteries.BatteryInProduction>(), nokBatteriesProducedList = new List<Batteries.BatteryInProduction>();
+
+        private TwinCAT.TwinCATVariableBuilder variableBuilder = null;
+
         private TwinCAT.TwinCATVariable<Boolean> simulatorState = null;
-        private TwinCAT.TwinCATVariable<Int32> productOpt = null;
+        private TwinCAT.TwinCATVariable<Int32> productOption = null;
 
-        private TwinCAT.TwinCATVariable<Double> tachom1MinOutOfRange = null;
-        private TwinCAT.TwinCATVariable<Double> tachom1MinValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom1RealValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom1MaxValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom1MaxOutOfRange = null;
+        private TwinCAT.TwinCATVariable<Double> tachometer1MinOutOfRange = null, tachometer1MinValue = null, tachometer1RealValue = null, tachometer1MaxValue = null, tachometer1MaxOutOfRange = null;
+        private TwinCAT.TwinCATVariable<Double> tachometer2MinOutOfRange = null, tachometer2MinValue = null, tachometer2RealValue = null, tachometer2MaxValue = null, tachometer2MaxOutOfRange = null;
+        private TwinCAT.TwinCATVariable<Double> tachometer3MinOutOfRange = null, tachometer3MinValue = null, tachometer3RealValue = null, tachometer3MaxValue = null, tachometer3MaxOutOfRange = null;
+        private TwinCAT.TwinCATVariable<Double> tachometer4MinOutOfRange = null, tachometer4MinValue = null, tachometer4RealValue = null, tachometer4MaxValue = null, tachometer4MaxOutOfRange = null;
 
-        private TwinCAT.TwinCATVariable<Double> tachom2MinOutOfRange = null;
-        private TwinCAT.TwinCATVariable<Double> tachom2MinValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom2RealValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom2MaxValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom2MaxOutOfRange = null;
+        private TwinCAT.TwinCATVariable<Int32> amountOfProducts = null, amountOfProductsPassed = null, amountOfProductsFailed = null, amountOfProductsToCreate = null;
 
-        private TwinCAT.TwinCATVariable<Double> tachom3MinOutOfRange = null;
-        private TwinCAT.TwinCATVariable<Double> tachom3MinValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom3RealValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom3MaxValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom3MaxOutOfRange = null;
-
-        private TwinCAT.TwinCATVariable<Double> tachom4MinOutOfRange = null;
-        private TwinCAT.TwinCATVariable<Double> tachom4MinValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom4RealValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom4MaxValue = null;
-        private TwinCAT.TwinCATVariable<Double> tachom4MaxOutOfRange = null;
-
-        private TwinCAT.TwinCATVariable<Int32> productCount = null;
-        private TwinCAT.TwinCATVariable<Int32> productPassed = null;
-        private TwinCAT.TwinCATVariable<Int32> productFailed = null;
-
-        private TwinCAT.TwinCATVariable<Int32> productsToCreate = null;
+        private TwinCAT.TwinCATVariable<Int32> mousePositionX = null;
 
         private TwinCAT.TwinCATVariable<Byte[]> imageOfProduct = null;
 
-        Recipes.BatteryRecipe recepieInUse = null;
-
         // Set start values for product in use
-        double startValueTotalLength, startValueTotalDiameter, startValueTerminalLength, startValueTerminalDiameter;
-
-        //int itemsToProduce = 10; //TODO: should be input from HMI.
+        private double startValueTotalLength, startValueTotalDiameter, startValueTerminalLength, startValueTerminalDiameter;
 
         private void SetupVariables()
         {
+            simulatorState = variableBuilder.Build<Boolean>("Task.Outputs.Out1");
+            productOption = variableBuilder.Build<Int32>("Task.Outputs.Out2");
 
-            simulatorState = varBuilder.Build<Boolean>("Task.Outputs.Out1");
-            productOpt = varBuilder.Build<Int32>("Task.Outputs.Out2");
+            tachometer1MinOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom1MinOutOfRange");
+            tachometer1MinValue = variableBuilder.Build<Double>("Task.Outputs.tachom1MinValue");
+            tachometer1RealValue = variableBuilder.Build<Double>("Task.Outputs.tachom1RealValue");
+            tachometer1MaxValue = variableBuilder.Build<Double>("Task.Outputs.tachom1MaxValue");
+            tachometer1MaxOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom1MaxOutOfRange");
 
-            tachom1MinOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom1MinOutOfRange");
-            tachom1MinValue = varBuilder.Build<Double>("Task.Outputs.tachom1MinValue");
-            tachom1RealValue = varBuilder.Build<Double>("Task.Outputs.tachom1RealValue");
-            tachom1MaxValue = varBuilder.Build<Double>("Task.Outputs.tachom1MaxValue");
-            tachom1MaxOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom1MaxOutOfRange");
+            tachometer2MinOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom2MinOutOfRange");
+            tachometer2MinValue = variableBuilder.Build<Double>("Task.Outputs.tachom2MinValue");
+            tachometer2RealValue = variableBuilder.Build<Double>("Task.Outputs.tachom2RealValue");
+            tachometer2MaxValue = variableBuilder.Build<Double>("Task.Outputs.tachom2MaxValue");
+            tachometer2MaxOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom2MaxOutOfRange");
 
-            tachom2MinOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom2MinOutOfRange");
-            tachom2MinValue = varBuilder.Build<Double>("Task.Outputs.tachom2MinValue");
-            tachom2RealValue = varBuilder.Build<Double>("Task.Outputs.tachom2RealValue");
-            tachom2MaxValue = varBuilder.Build<Double>("Task.Outputs.tachom2MaxValue");
-            tachom2MaxOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom2MaxOutOfRange");
+            tachometer3MinOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom3MinOutOfRange");
+            tachometer3MinValue = variableBuilder.Build<Double>("Task.Outputs.tachom3MinValue");
+            tachometer3RealValue = variableBuilder.Build<Double>("Task.Outputs.tachom3RealValue");
+            tachometer3MaxValue = variableBuilder.Build<Double>("Task.Outputs.tachom3MaxValue");
+            tachometer3MaxOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom3MaxOutOfRange");
 
-            tachom3MinOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom3MinOutOfRange");
-            tachom3MinValue = varBuilder.Build<Double>("Task.Outputs.tachom3MinValue");
-            tachom3RealValue = varBuilder.Build<Double>("Task.Outputs.tachom3RealValue");
-            tachom3MaxValue = varBuilder.Build<Double>("Task.Outputs.tachom3MaxValue");
-            tachom3MaxOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom3MaxOutOfRange");
+            tachometer4MinOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom4MinOutOfRange");
+            tachometer4MinValue = variableBuilder.Build<Double>("Task.Outputs.tachom4MinValue");
+            tachometer4RealValue = variableBuilder.Build<Double>("Task.Outputs.tachom4RealValue");
+            tachometer4MaxValue = variableBuilder.Build<Double>("Task.Outputs.tachom4MaxValue");
+            tachometer4MaxOutOfRange = variableBuilder.Build<Double>("Task.Outputs.tachom4MaxOutOfRange");
 
-            tachom4MinOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom4MinOutOfRange");
-            tachom4MinValue = varBuilder.Build<Double>("Task.Outputs.tachom4MinValue");
-            tachom4RealValue = varBuilder.Build<Double>("Task.Outputs.tachom4RealValue");
-            tachom4MaxValue = varBuilder.Build<Double>("Task.Outputs.tachom4MaxValue");
-            tachom4MaxOutOfRange = varBuilder.Build<Double>("Task.Outputs.tachom4MaxOutOfRange");
+            amountOfProducts = variableBuilder.Build<Int32>("Task.Outputs.productCount");
+            amountOfProductsPassed = variableBuilder.Build<Int32>("Task.Outputs.productPassed");
+            amountOfProductsFailed = variableBuilder.Build<Int32>("Task.Outputs.productFailed");
+            amountOfProductsToCreate = variableBuilder.Build<Int32>("Task.Outputs.productsToCreate");
 
-            productCount = varBuilder.Build<Int32>("Task.Outputs.productCount");
-            productPassed = varBuilder.Build<Int32>("Task.Outputs.productPassed");
-            productFailed = varBuilder.Build<Int32>("Task.Outputs.productFailed");
+            mousePositionX = variableBuilder.Build<Int32>("Task.Outputs.mousePosX");
 
-            productsToCreate = varBuilder.Build<Int32>("Task.Outputs.productsToCreate");
-
-            imageOfProduct = varBuilder.Build<Byte[]>("Task.Outputs.picture");
+            imageOfProduct = variableBuilder.Build<Byte[]>("Task.Outputs.picture");
 
             // Read in all recipies
             Recipes.RecipeHandler.ReadInAllBatteriesRecipies(allBatteriesRecipiesList);
-
-
         }
 
         private void SetStartValues(Recipes.BatteryRecipe recepieInUse)
@@ -142,13 +115,13 @@ namespace ConsoleApp1
 
         private void ClearProductCounters()
         {
-            productCount.Value = 0;
-            productPassed.Value = 0;
-            productFailed.Value = 0; // Does not update sometimes?
+            amountOfProducts.Value = 0;
+            amountOfProductsPassed.Value = 0;
+            amountOfProductsFailed.Value = 0; // Does not update sometimes?
         }
 
-        bool simState = false;
-        bool oldSimState = false;
+        bool simulationState = false;
+        bool oldSimulationState = false;
 
         /// <summary>
         /// Set a new simstate to HMI output and local state and old local state.
@@ -157,29 +130,32 @@ namespace ConsoleApp1
         private void SetNewSimState(bool newSimState)
         {
             simulatorState.Value = newSimState;
-            simState = simulatorState.Value;
-            oldSimState = simState;
+            simulationState = simulatorState.Value;
+            oldSimulationState = simulationState;
         }
 
         /// <summary>
         /// The main loop of the program.
         /// This is where items are produced.
         /// </summary>
-        private void RunLoop()
+        private void Run()
         {
-            int productOption = 0; //TODO: Use an Enum for this. Current supported values are 0-2.
+            int productOption = 0; //TODO: Use an Enum for this. Current supported values are 0 -> 1.
             int oldProductOption = -1;
             bool firstStart = true;
 
             while (!Exit)
             {
-                productsToCreate.Polling = true;
+                mousePositionX.Polling = true;
+                //Console.WriteLine("Mouse pos X: " + mousePositionX.Value);
 
-                productOpt.Polling = true;
-                productOption = productOpt.Value;
+                amountOfProductsToCreate.Polling = true;
+
+                this.productOption.Polling = true;
+                productOption = this.productOption.Value;
 
                 int randomSleepTime = 50; // ms
-                int productSleepTime = 800; //ms
+                int productSleepTime = 800; // ms
 
                 double randomRange = 0.05; // sets the range in method Maths.Maths.GetRandomNumberWithRange()
 
@@ -233,23 +209,22 @@ namespace ConsoleApp1
                     oldProductOption = productOption;
                 }
 
-                if (productsToCreate.Value > 0) // Cant create products less than 1.
+                if (amountOfProductsToCreate.Value > 0) // Cant create products less than 1.
                 {
-
                     // run manufacturing process of chosen product
                     switch (productOption)
                     {
                         case 0: // Simulate AA Batteries
                             simulatorState.Polling = true;
-                            simState = simulatorState.Value;
+                            simulationState = simulatorState.Value;
 
-                            if (simState != oldSimState)
+                            if (simulationState != oldSimulationState)
                             {
-                                if (simState)
+                                if (simulationState)
                                 {
                                     Console.WriteLine("STARTED AA Batteries!");
-                                    productsToCreate.Polling = true;
-                                    Console.WriteLine("Products to create: " + productsToCreate.Value);
+                                    amountOfProductsToCreate.Polling = true;
+                                    Console.WriteLine("Products to create: " + amountOfProductsToCreate.Value);
 
                                     if (firstStart)
                                     {
@@ -263,20 +238,21 @@ namespace ConsoleApp1
                                     Console.WriteLine("PAUSED AA Batteries!");
                                 }
 
-                                oldSimState = simState;
+                                oldSimulationState = simulationState;
                             }
 
-                            if (simState)
+                            if (simulationState)
                             {
-                                bool toBreakIfPaused = false;
+                                bool breakWhenPaused = false;
 
                                 while (true)
                                 {
                                     simulatorState.Polling = true;
-                                    simState = simulatorState.Value;
-                                    if (!simState)
+                                    simulationState = simulatorState.Value;
+
+                                    if (!simulationState)
                                     {
-                                        toBreakIfPaused = true;
+                                        breakWhenPaused = true;
                                         break;
                                     }
 
@@ -298,10 +274,10 @@ namespace ConsoleApp1
 
                                     Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
 
-                                    tachom1RealValue.Value = batteryInProduction.TotalLength;
-                                    tachom2RealValue.Value = batteryInProduction.TotalDiameter;
-                                    tachom3RealValue.Value = batteryInProduction.TerminalLength;
-                                    tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
+                                    tachometer1RealValue.Value = batteryInProduction.TotalLength;
+                                    tachometer2RealValue.Value = batteryInProduction.TotalDiameter;
+                                    tachometer3RealValue.Value = batteryInProduction.TerminalLength;
+                                    tachometer4RealValue.Value = batteryInProduction.TerminalDiameter;
 
                                     Thread.Sleep(productSleepTime);
 
@@ -309,15 +285,15 @@ namespace ConsoleApp1
                                     if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
                                     {
                                         okBatteriesProducedList.Add(batteryInProduction);
-                                        productPassed.Value = okBatteriesProducedList.Count;
+                                        amountOfProductsPassed.Value = okBatteriesProducedList.Count;
                                     }
                                     else
                                     {
                                         nokBatteriesProducedList.Add(batteryInProduction);
-                                        productFailed.Value = nokBatteriesProducedList.Count;
+                                        amountOfProductsFailed.Value = nokBatteriesProducedList.Count;
                                     }
 
-                                    productCount.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
+                                    amountOfProducts.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
 
                                     // Print out values for each measure of the battery
                                     PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength), tempValueTotalLength);
@@ -330,37 +306,35 @@ namespace ConsoleApp1
 
                                     SetStartValues(tempValueTotalLength, tempValueTotalDiameter, tempValueTerminalLength, tempValueTerminalDiameter);
 
-                                    if (okBatteriesProducedList.Count == productsToCreate.Value)
+                                    if (okBatteriesProducedList.Count == amountOfProductsToCreate.Value)
                                     {
-                                        tachom1RealValue.Value = 0;
-                                        tachom2RealValue.Value = 0;
-                                        tachom3RealValue.Value = 0;
-                                        tachom4RealValue.Value = 0;
+                                        tachometer1RealValue.Value = 0;
+                                        tachometer2RealValue.Value = 0;
+                                        tachometer3RealValue.Value = 0;
+                                        tachometer4RealValue.Value = 0;
                                         break;
                                     }
                                 }
 
                                 PrintProductOKNOKData();
-                                if (toBreakIfPaused) break;
+                                if (breakWhenPaused) break;
 
                                 SetNewSimState(false);
                                 firstStart = true;
-
-                                //Console.WriteLine("This line should NOT be printed if paused...");
                             }
 
                             break;
                         case 1: // Simulate AAA Batteries
                             simulatorState.Polling = true;
-                            simState = simulatorState.Value;
+                            simulationState = simulatorState.Value;
 
-                            if (simState != oldSimState)
+                            if (simulationState != oldSimulationState)
                             {
-                                if (simState)
+                                if (simulationState)
                                 {
                                     Console.WriteLine("STARTED AAA Batteries!");
-                                    productsToCreate.Polling = true;
-                                    Console.WriteLine("Products to create: " + productsToCreate.Value);
+                                    amountOfProductsToCreate.Polling = true;
+                                    Console.WriteLine("Products to create: " + amountOfProductsToCreate.Value);
 
                                     if (firstStart)
                                     {
@@ -374,20 +348,21 @@ namespace ConsoleApp1
                                     Console.WriteLine("PAUSED AAA Batteries!");
                                 }
 
-                                oldSimState = simState;
+                                oldSimulationState = simulationState;
                             }
 
-                            if (simState)
+                            if (simulationState)
                             {
-                                bool toBreakIfPaused = false;
+                                bool breakWhenPaused = false;
 
                                 while (true)
                                 {
                                     simulatorState.Polling = true;
-                                    simState = simulatorState.Value;
-                                    if (!simState)
+                                    simulationState = simulatorState.Value;
+
+                                    if (!simulationState)
                                     {
-                                        toBreakIfPaused = true;
+                                        breakWhenPaused = true;
                                         break;
                                     }
 
@@ -409,10 +384,10 @@ namespace ConsoleApp1
 
                                     Batteries.BatteryInProduction batteryInProduction = new Batteries.BatteryInProduction(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength, tempValueTotalDiameter, recepieInUse.MinValueTotalDiameter, recepieInUse.MaxValueTotalDiameter, tempValueTerminalLength, recepieInUse.MinValueTerminalLength, recepieInUse.MaxValueTerminalLength, tempValueTerminalDiameter, recepieInUse.MinValueTerminalDiameter, recepieInUse.MaxValueTerminalDiameter);
 
-                                    tachom1RealValue.Value = batteryInProduction.TotalLength;
-                                    tachom2RealValue.Value = batteryInProduction.TotalDiameter;
-                                    tachom3RealValue.Value = batteryInProduction.TerminalLength;
-                                    tachom4RealValue.Value = batteryInProduction.TerminalDiameter;
+                                    tachometer1RealValue.Value = batteryInProduction.TotalLength;
+                                    tachometer2RealValue.Value = batteryInProduction.TotalDiameter;
+                                    tachometer3RealValue.Value = batteryInProduction.TerminalLength;
+                                    tachometer4RealValue.Value = batteryInProduction.TerminalDiameter;
 
                                     Thread.Sleep(productSleepTime);
 
@@ -420,15 +395,15 @@ namespace ConsoleApp1
                                     if (Maths.Maths.CheckIfBatteryValuesAreOK(batteryInProduction))
                                     {
                                         okBatteriesProducedList.Add(batteryInProduction);
-                                        productPassed.Value = okBatteriesProducedList.Count;
+                                        amountOfProductsPassed.Value = okBatteriesProducedList.Count;
                                     }
                                     else
                                     {
                                         nokBatteriesProducedList.Add(batteryInProduction);
-                                        productFailed.Value = nokBatteriesProducedList.Count;
+                                        amountOfProductsFailed.Value = nokBatteriesProducedList.Count;
                                     }
 
-                                    productCount.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
+                                    amountOfProducts.Value = okBatteriesProducedList.Count + nokBatteriesProducedList.Count;
 
                                     // Print out values for each measure of the battery
                                     PrintOut(Maths.Maths.CheckIfValueIsWithinRange(tempValueTotalLength, recepieInUse.MinValueTotalLength, recepieInUse.MaxValueTotalLength), tempValueTotalLength);
@@ -441,23 +416,21 @@ namespace ConsoleApp1
 
                                     SetStartValues(tempValueTotalLength, tempValueTotalDiameter, tempValueTerminalLength, tempValueTerminalDiameter);
 
-                                    if (okBatteriesProducedList.Count == productsToCreate.Value)
+                                    if (okBatteriesProducedList.Count == amountOfProductsToCreate.Value)
                                     {
-                                        tachom1RealValue.Value = 0;
-                                        tachom2RealValue.Value = 0;
-                                        tachom3RealValue.Value = 0;
-                                        tachom4RealValue.Value = 0;
+                                        tachometer1RealValue.Value = 0;
+                                        tachometer2RealValue.Value = 0;
+                                        tachometer3RealValue.Value = 0;
+                                        tachometer4RealValue.Value = 0;
                                         break;
                                     }
                                 }
 
                                 PrintProductOKNOKData();
-                                if (toBreakIfPaused) break;
+                                if (breakWhenPaused) break;
 
                                 SetNewSimState(false);
                                 firstStart = true;
-
-                                //Console.WriteLine("This line should NOT be printed if paused...");
                             }
 
                             break;
@@ -479,31 +452,31 @@ namespace ConsoleApp1
         /// <param name="recepieInUse"></param>
         private void SetTachometersRange(Recipes.BatteryRecipe recepieInUse)
         {
-            int numberOfDecimals = 1; // sets the number of decimals that will be returned
+            const int numberOfDecimals = 1; // Sets the number of decimals that will be returned.
 
-            tachom1MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom1MinValue.Value = Math.Round(recepieInUse.MinValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom1RealValue.Value = 0;
-            tachom1MaxValue.Value = Math.Round(recepieInUse.MaxValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom1MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer1MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer1MinValue.Value = Math.Round(recepieInUse.MinValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer1RealValue.Value = 0;
+            tachometer1MaxValue.Value = Math.Round(recepieInUse.MaxValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer1MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTotalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
 
-            tachom2MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom2MinValue.Value = Math.Round(recepieInUse.MinValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom2RealValue.Value = 0;
-            tachom2MaxValue.Value = Math.Round(recepieInUse.MaxValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom2MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer2MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer2MinValue.Value = Math.Round(recepieInUse.MinValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer2RealValue.Value = 0;
+            tachometer2MaxValue.Value = Math.Round(recepieInUse.MaxValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer2MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTotalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
 
-            tachom3MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom3MinValue.Value = Math.Round(recepieInUse.MinValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom3RealValue.Value = 0;
-            tachom3MaxValue.Value = Math.Round(recepieInUse.MaxValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom3MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer3MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer3MinValue.Value = Math.Round(recepieInUse.MinValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer3RealValue.Value = 0;
+            tachometer3MaxValue.Value = Math.Round(recepieInUse.MaxValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer3MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTerminalLength, numberOfDecimals, MidpointRounding.AwayFromZero);
 
-            tachom4MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom4MinValue.Value = Math.Round(recepieInUse.MinValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom4RealValue.Value = 0;
-            tachom4MaxValue.Value = Math.Round(recepieInUse.MaxValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
-            tachom4MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer4MinOutOfRange.Value = Math.Round(recepieInUse.TachometerMinValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer4MinValue.Value = Math.Round(recepieInUse.MinValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer4RealValue.Value = 0;
+            tachometer4MaxValue.Value = Math.Round(recepieInUse.MaxValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
+            tachometer4MaxOutOfRange.Value = Math.Round(recepieInUse.TachometerMaxValueTerminalDiameter, numberOfDecimals, MidpointRounding.AwayFromZero);
 
         }
         private void PrintProductOKNOKData()
@@ -540,11 +513,14 @@ namespace ConsoleApp1
         /// <param name="path"></param>
         public void ShowImage(List<int> list, String path)
         {
+            const string fileNameBeginning = "DSC05", fileNameExtension = ".JPG";
+            const int arraySize = 256;
+
             Random random = new Random();
             int randomIndex = random.Next(0, list.Count);
-            string value = path + "DSC05" + list[randomIndex] + ".JPG";
+            string value = path + fileNameBeginning + list[randomIndex] + fileNameExtension;
             byte[] temp = Encoding.UTF8.GetBytes(value);
-            byte[] toBeSended = new byte[256];
+            byte[] toBeSended = new byte[arraySize];
 
             for (int i = 0; i < temp.Length; i++)
             {
@@ -552,16 +528,15 @@ namespace ConsoleApp1
             }
 
             imageOfProduct.Value = toBeSended;
-
         }
 
         /// <summary>
-        /// Connects to PLC at localhost via ADS.
+        /// Connects to ADS at localhost.
         /// </summary>
-        private void ConnectToPLC()
+        private void ConnectToADS()
         {
-            Console.WriteLine("Connecting to PLC...");
-            varBuilder = new TwinCAT.TwinCATVariableBuilder(); // Connects to PLC.
+            Console.WriteLine("Connecting using ADS...");
+            variableBuilder = new TwinCAT.TwinCATVariableBuilder(); // Connect using ADS.
         }
 
         private void StopSimulation()

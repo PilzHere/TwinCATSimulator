@@ -214,8 +214,20 @@
 							<BitOffs>5592</BitOffs>
 							<ExternalAddress>699</ExternalAddress>
 						</Var>
+						<Var>
+							<Name>mousePosX</Name>
+							<Type>DINT</Type>
+							<BitOffs>5624</BitOffs>
+							<ExternalAddress>703</ExternalAddress>
+						</Var>
+						<Var>
+							<Name>mousePosY</Name>
+							<Type>DINT</Type>
+							<BitOffs>5656</BitOffs>
+							<ExternalAddress>707</ExternalAddress>
+						</Var>
 					</Vars>
-					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="703">
+					<Image Id="1" AddrType="1" ImageType="1" SizeIn="1" SizeOut="711">
 						<Name>Image</Name>
 					</Image>
 				</Task>
